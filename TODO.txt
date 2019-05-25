@@ -1,0 +1,25 @@
+-odczyt pliku p³askiego do pamiêci i render na stronê
+-dopisaywanie czegokolwiek do pliku i zapis
+-modyfikacja istniej¹cego wiersza pliku
+-usuniêcie wiersza
+-kopia wiersza i dodanie lnijkê ni¿ej
+-bakup pliku
+-przywrócanie z bakupu
+
+----testy do powy¿szych funkcjonalnoœci
+
+-zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
+
+-pobieranie pliku z ftp i zapis do ftp
+-bakup i przywracanie bakupu z ftp
+-limitowanie dostêpu do aplikacji (login i pass)
+-zapis do konfigu i odczyt z konfigu ustawieñ ftp ( w formie zakodowanej)
+
+----testy do funkcjonalnoœci wy¿ej
+
+-konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
+
+--testy aplikacji (w tym automatyczne)
+
+-poprawiæ layout aplikacji
+-uzupe³niæ dokumentacjê
