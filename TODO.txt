@@ -1,25 +1,28 @@
--odczyt pliku p³askiego do pamiêci i render na stronê
+-[ZROBIONE]odczyt pliku pÅ‚askiego do pamiÄ™ci i render na stronÄ™
+	-[ZROBIONE]odczyt i wydruk w konsoli
+	-[ZROBIONE]odczyt i render na stronie caÅ‚ymi liniami
+	-[ZROBIONE]Render na stronie pojedyÅ„czymi komÃ³rkami
 -dopisaywanie czegokolwiek do pliku i zapis
--modyfikacja istniej¹cego wiersza pliku
--usuniêcie wiersza
--kopia wiersza i dodanie lnijkê ni¿ej
+-modyfikacja istniejÄ…cego wiersza pliku
+-usuniÄ™cie wiersza
+-kopia wiersza i dodanie lnijki niÅ¼ej
 -bakup pliku
--przywrócanie z bakupu
+-przywrÃ³cenie z bakupu
 
-----testy do powy¿szych funkcjonalnoœci
+----testy do powyÅ¼szych funkcjonalnoÅ›ci
 
--zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
+-zebranie wszystkich klockÃ³w do jednej aplikacji (przy pracy na lokalnym pliku)
 
 -pobieranie pliku z ftp i zapis do ftp
 -bakup i przywracanie bakupu z ftp
--limitowanie dostêpu do aplikacji (login i pass)
--zapis do konfigu i odczyt z konfigu ustawieñ ftp ( w formie zakodowanej)
+-limitowanie dostÄ™pu do aplikacji (login i pass)
+-zapis do konfigu i odczyt z konfigu ustawieÅ„ ftp ( w formie zakodowanej)
 
-----testy do funkcjonalnoœci wy¿ej
+----testy do funkcjonalnoÅ›ci wyÅ¼ej
 
--konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
+-konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringÃ³w)
 
 --testy aplikacji (w tym automatyczne)
 
--poprawiæ layout aplikacji
--uzupe³niæ dokumentacjê
+-poprawiÄ‡ layout aplikacji
+-uzupeÅ‚niÄ‡ dokumentacjÄ™
