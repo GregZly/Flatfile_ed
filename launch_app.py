@@ -1,8 +1,8 @@
 import os
 
 
-from library.read_and_show_csv import app
-
+#from library.read_and_show_csv import app #example of reading and writing
+from library.add_new_row import app #example of writing data to the end of file
 
 if __name__ == '__main__':
     app.debug = True

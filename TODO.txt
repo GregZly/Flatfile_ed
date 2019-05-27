@@ -2,8 +2,17 @@
 	-[ZROBIONE]odczyt i wydruk w konsoli
 	-[ZROBIONE]odczyt i render na stronie całymi liniami
 	-[ZROBIONE]Render na stronie pojedyńczymi komórkami
--dopisaywanie czegokolwiek do pliku i zapis
--modyfikacja istniejącego wiersza pliku
+-[ZROBIONE]dopisywanie czegokolwiek do pliku i zapis
+	-[ZROBIONE]wersja konsolowa - jedna linia
+	-[ZROBIONE]wersja przeglądarkowa - jedna linia
+		-[ZROBIONE]formularz: input text i submit button
+		-[ZROBIONE]rozwiązać problem dodatkowego  wiersza w pliku
+			-do polecenia open trzeba dodać dodatkowy parameter newline=''
+	-[ZROBIONE]wersja przeglądarkowa - 3 komórki na sztywno
+-[WIP]modyfikacja istniejącego wiersza pliku
+	-konsolowe wyszukanie wiersza i jego modyfikacja
+	-update wybranego wiersza w przeglądarce
+	-update z sortowaniem
 -usunięcie wiersza
 -kopia wiersza i dodanie lnijki niżej
 -bakup pliku
@@ -21,6 +30,8 @@
 ----testy do funkcjonalności wyżej
 
 -konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
+	-do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
+		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)  
 
 --testy aplikacji (w tym automatyczne)
 
