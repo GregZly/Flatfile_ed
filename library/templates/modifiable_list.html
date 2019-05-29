@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Modifiable CSV Output</title>
+    </head>
+    <body>
+        <h1>Modifiable CSV</h1>
+        <table border="1">
+            {% for row in csv_data %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{cell}}</td>
+                    {% endfor %}
+                    <td><form method="POST" action='/modify_row'>
+                        <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
+                        <input type="submit" value="Modify" />
+                    </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+    </body>
+</html>

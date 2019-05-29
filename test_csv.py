@@ -8,17 +8,24 @@ def main():
 
     csv_reader = csv.reader(csv_file, 'mydia')
     
-    #show all data
+    #copy all data to collection
+    csv_data = []
     for row in csv_reader:
-        print(row)
+        csv_data.append(row)
     #close file to read
+    print(csv_data)
     csv_file.close()
 
     #add new row and write file
-    csv_file = open(csv_path, 'a')
-    row = ['Sample4','40.20','N']
+    row = ['Sample6','44.22','Y']
+    csv_data.append(row)
+
+    #change current row to other
+    csv_data[2] = ['Change Sample2','20.00','NN']
+
+    csv_file = open(csv_path, 'w', newline='')
     csv_writer = csv.writer(csv_file, 'mydia')
-    csv_writer.writerow(row)
+    csv_writer.writerows(csv_data)
 
     #close file at the end
     csv_file.close()

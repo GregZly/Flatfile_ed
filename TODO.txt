@@ -9,10 +9,20 @@
 		-[ZROBIONE]rozwiązać problem dodatkowego  wiersza w pliku
 			-do polecenia open trzeba dodać dodatkowy parameter newline=''
 	-[ZROBIONE]wersja przeglądarkowa - 3 komórki na sztywno
--[WIP]modyfikacja istniejącego wiersza pliku
-	-konsolowe wyszukanie wiersza i jego modyfikacja
-	-update wybranego wiersza w przeglądarce
-	-update z sortowaniem
+-[ZROBIONE]modyfikacja istniejącego wiersza pliku
+	-[ZROBIONE]konsolowe wyszukanie wiersza i jego modyfikacja
+		-[ZROBIONE]zmienić sposób postępowania przy zapisie
+			-[ZROBIONE]wczytać plik w trybie w 
+			-[ZROBIONE]zapis całej zawartości zbioru danych
+		-[ZROBIONE]modyfikacja danej w tablicy i zapis jak wyżej
+	-[ZROBIONE]update wybranego wiersza w przeglądarce
+		-[ZROBIONE]lista wierszy z dodatkowym przyciskiem do modyfikacji
+			-[ZROBIONE]lista w pełni proceduralna (kolumny i wiersze dynamicznie)
+			-[ZROBIONE]Button który odpali formularz z modyfikacją wiersza
+			-[ZROBIONE]formularz do modyfikacji (ma mieć dane wybranego wiersza)
+		-[ZROBIONE]oddzielna stronka z modyfikacją wiersza
+		-[ZROBIONE]skrypt który zmodyfikuje plik i powróci do strony listą danych
+-dodanie wiersza i posortowaniem jako opcja
 -usunięcie wiersza
 -kopia wiersza i dodanie lnijki niżej
 -bakup pliku
