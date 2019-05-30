@@ -10,10 +10,17 @@
                     {% for cell in row %}
                         <td>{{cell}}</td>
                     {% endfor %}
-                    <td><form method="POST" action='/modify_row'>
-                        <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
-                        <input type="submit" value="Modify" />
-                    </form>
+                    <td>
+                        <form method="POST" action='/modify_row'>
+                            <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
+                            <input type="submit" value="Modify" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method='POST' action='/remove_row'>
+                            <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
+                            <input type="submit" value="Delete Row" />
+                        </form>
                     </td>
                 </tr>
             {% endfor %}

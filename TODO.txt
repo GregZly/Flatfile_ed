@@ -26,10 +26,10 @@
 	-[ZROBIONE]kopia formularza append_row
 		-[ZROBIONE]check box do posortowania danych
 	-[ZROBIONE]obsługa sortowania i zapis w pliku który wykonuje app
--[WIP]usunięcie wiersza
-	-button na liście do usuwania
-	-usunięcie wpisu
-	-pokazanie odświeżonej listy
+-[ZROBIONE]usunięcie wiersza
+	-[ZROBIONE]button na liście do usuwania
+	-[ZROBIONE]usunięcie wpisu
+	-[ZROBIONE]pokazanie odświeżonej listy
 -kopia wiersza i dodanie lnijki niżej
 -zapis do zmiennej ilości kolumn (obecnie to 3 kolumny na sztywno)
 -bakup pliku

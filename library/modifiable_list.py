@@ -55,3 +55,27 @@ def save_modification():
     
     return show_csv_data()
 
+@app.route('/remove_row', methods=['POST'])
+def remove_row():
+    #Add custom dialect to read and write CSV file correct
+    csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)    
+    csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
+    csv_file = open(csv_path, 'r', newline='')
+    csv_reader = csv.reader(csv_file, delimiter=',', doublequote=True)
+    csv_data = []
+    for row in csv_reader:
+        csv_data.append(row)
+
+    csv_file.close()
+
+    #read data to new row
+    print(request.form)
+    csv_data.remove(csv_data[int(request.form['row_index'])])   
+    
+    csv_file = open(csv_path, 'w', newline='')
+    csv_writer = csv.writer(csv_file, 'mydia')
+    csv_writer.writerows(csv_data)
+    csv_file.close()
+    
+    return show_csv_data()
+
