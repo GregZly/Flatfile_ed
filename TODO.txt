@@ -22,9 +22,16 @@
 			-[ZROBIONE]formularz do modyfikacji (ma mieć dane wybranego wiersza)
 		-[ZROBIONE]oddzielna stronka z modyfikacją wiersza
 		-[ZROBIONE]skrypt który zmodyfikuje plik i powróci do strony listą danych
--dodanie wiersza i posortowaniem jako opcja
--usunięcie wiersza
+-[ZROBIONE]dodanie wiersza i posortowaniem jako opcja
+	-[ZROBIONE]kopia formularza append_row
+		-[ZROBIONE]check box do posortowania danych
+	-[ZROBIONE]obsługa sortowania i zapis w pliku który wykonuje app
+-[WIP]usunięcie wiersza
+	-button na liście do usuwania
+	-usunięcie wpisu
+	-pokazanie odświeżonej listy
 -kopia wiersza i dodanie lnijki niżej
+-zapis do zmiennej ilości kolumn (obecnie to 3 kolumny na sztywno)
 -bakup pliku
 -przywrócenie z bakupu
 
