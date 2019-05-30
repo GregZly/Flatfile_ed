@@ -30,7 +30,10 @@
 	-[ZROBIONE]button na liście do usuwania
 	-[ZROBIONE]usunięcie wpisu
 	-[ZROBIONE]pokazanie odświeżonej listy
--kopia wiersza i dodanie lnijki niżej
+-[ZROBIONE]kopia wiersza i dodanie lnijki niżej
+	-to trochę bez sensu ale możnaby rozszerzyć mod_row_html
+	-[ZROBIONE]dodać buttona do dodatkowego save-u jako nowy wiersz
+	-[ZROBIONE]dołożyć obsługę dodania nowego wiersza w modifiable_list.py
 -zapis do zmiennej ilości kolumn (obecnie to 3 kolumny na sztywno)
 -bakup pliku
 -przywrócenie z bakupu

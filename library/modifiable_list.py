@@ -46,8 +46,11 @@ def save_modification():
 
     #read data to new row
     print(request.form)
-    csv_data[int(request.form['mod_index'])] =[request.form['col1'],request.form['col2'],request.form['col3']]
+    if request.form.get('submit') == 'modify':
+        csv_data[int(request.form['mod_index'])] =[request.form['col1'],request.form['col2'],request.form['col3']]
     
+    elif request.form.get('submit') == 'save_as_new':
+        csv_data.append([request.form['col1'],request.form['col2'],request.form['col3']])
     csv_file = open(csv_path, 'w', newline='')
     csv_writer = csv.writer(csv_file, 'mydia')
     csv_writer.writerows(csv_data)
