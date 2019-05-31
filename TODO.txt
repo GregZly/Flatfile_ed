@@ -34,7 +34,11 @@
 	-to trochę bez sensu ale możnaby rozszerzyć mod_row_html
 	-[ZROBIONE]dodać buttona do dodatkowego save-u jako nowy wiersz
 	-[ZROBIONE]dołożyć obsługę dodania nowego wiersza w modifiable_list.py
--zapis do zmiennej ilości kolumn (obecnie to 3 kolumny na sztywno)
+-[ZROBIONE]zapis do zmiennej ilości kolumn (obecnie to 3 kolumny na sztywno)
+	-[ZROBIONE]zrozumieć jak działa typ danych Dict któym Flask przerzuca dane z formularzy
+	-[ZROBIONE]odwoływać się do do zbioru tak żebym zebrał generycznie potrzebne dane
+	-[ZROBIONE]przerobić tak modifiable_list.py żeby nie było odwołania się do kolumn "na sztywno"
+	 przy zapisie,updacie
 -bakup pliku
 -przywrócenie z bakupu
 
