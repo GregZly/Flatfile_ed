@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import csv
 import datetime
-
+import glob
 
 app = Flask(__name__)
 
@@ -109,5 +109,20 @@ def create_backup():
 
     return show_csv_data()
 
+@app.route('/list_of_backups')
+def list_of_backups():
+    #generate list of backup files
+    backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
+    backup_list = glob.glob(backup_dir + "\\*.bak")
+
+    #backup list for view
+    backups = []
+    for path in backup_list:
+        backups.append([path, path.replace(backup_dir + "\\",'')])
+    backups = sorted(backups, key=lambda tup: tup[1],reverse=True)
+
+    return render_template('backups.html',backups=backups)
+
+#@app.route('/show_backup')
 
     
