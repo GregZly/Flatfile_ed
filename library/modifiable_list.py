@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import csv
+import datetime
 
 
 app = Flask(__name__)
@@ -85,3 +86,28 @@ def remove_row():
     
     return show_csv_data()
 
+@app.route('/create_new_backup')
+def create_backup():
+    #open csv file
+    csv_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed"
+    csv_name = "test.csv"
+    csv_path = csv_dir + "\\" + csv_name
+    csv_file = open(csv_path, 'r', newline='')
+
+    #init backup copy of csv file
+    backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
+    backup_time = datetime.datetime.today().strftime("%Y%m%d_%H_%M_%S")
+    backup_file_name = backup_time + csv_name + ".bak"
+    backup_path = backup_dir + "\\" + backup_file_name
+    backup_file = open(backup_path,'x', newline='')
+
+    #save csv_file to backup
+    for line in csv_file:
+        backup_file.write(line)
+
+    backup_file.close()
+
+    return show_csv_data()
+
+
+    

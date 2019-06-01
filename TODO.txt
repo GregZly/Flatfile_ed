@@ -39,8 +39,16 @@
 	-[ZROBIONE]odwoływać się do do zbioru tak żebym zebrał generycznie potrzebne dane
 	-[ZROBIONE]przerobić tak modifiable_list.py żeby nie było odwołania się do kolumn "na sztywno"
 	 przy zapisie,updacie
--bakup pliku
+-[ZROBIONE]bakup pliku
+	-[ZROBIONE]kopia używanego pliku do lokalnego folderu aplikacji /backup
+		-[ZROBIONE]szablon nazwy pliku: DATA_CZAS_NAZWA.EXT.BAK
+		-[ZROBIONE].gitignore - folder /backup ma być w repo, ale zawartość nie
+	-[ZROBIONE]przycisk zrobienia backupu 
+		-[ZROBIONE]dodać do modifiable_list.html
 -przywrócenie z bakupu
+-przeniesienie kopii kodu do oddzielnych funkcji
+	-otwieranie pliku csv
+	-zapis do pliku csv
 
 ----testy do powyższych funkcjonalności
 
@@ -56,6 +64,11 @@
 -konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
 	-do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
 		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)  
+
+-logowanie zadrzeń do pliku loga
+	-wywalanie aplikacji gdy wielkość pliku loga przekroczy limit bezpieczeństwa
+		-w konfigu do ustalenia
+		-gdy konfig jest niedostępny to 1 GB
 
 --testy aplikacji (w tym automatyczne)
 
