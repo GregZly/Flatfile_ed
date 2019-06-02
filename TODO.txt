@@ -45,13 +45,13 @@
 		-[ZROBIONE].gitignore - folder /backup ma być w repo, ale zawartość nie
 	-[ZROBIONE]przycisk zrobienia backupu 
 		-[ZROBIONE]dodać do modifiable_list.html
--[WIP]przywrócenie z bakupu
+-[ZROBIONE]przywrócenie z bakupu
 	-[ZROBIONE]oddzielna strona z listą backupów
 		-[ZROBIONE]posortowane od najmłodszego
 	-[ZROBIONE]przycisk na pierwszej stronie odsyłający do listy backupów
-	-[WIP]podgląd backupu
-	-przycisk na podglądzie do przywrócenia
-	-powrót na pierwszą stronę po przywróceniu
+	-[ZROBIONE]podgląd backupu
+	-[ZROBIONE]przycisk na podglądzie do przywrócenia
+	-[ZROBIONE]przywrócenie i powrót na pierwszą stronę po przywróceniu
 -przeniesienie kopii kodu do oddzielnych funkcji
 	-otwieranie pliku csv
 	-zapis do pliku csv

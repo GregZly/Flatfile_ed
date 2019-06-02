@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import csv
 import datetime
 import glob
@@ -6,6 +6,7 @@ import glob
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/index')
 def show_csv_data():
     #get csv
     csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
@@ -53,7 +54,6 @@ def save_modification():
 
     elif request.form.get('submit') == 'save_as_new':
         csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
-        #csv_data.append([request.form['col1'],request.form['col2'],request.form['col3']])
         csv_data.append(csv_row.values())
     csv_file = open(csv_path, 'w', newline='')
     csv_writer = csv.writer(csv_file, 'mydia')
@@ -84,7 +84,7 @@ def remove_row():
     csv_writer.writerows(csv_data)
     csv_file.close()
     
-    return show_csv_data()
+    return redirect("/", code=301)
 
 @app.route('/create_new_backup')
 def create_backup():
@@ -123,6 +123,31 @@ def list_of_backups():
 
     return render_template('backups.html',backups=backups)
 
-#@app.route('/show_backup')
+@app.route('/show_backup', methods=['POST'])
+def show_backup():
+    #get backup csv
+    backup_path = request.form.get('backup_path') 
+    backup_file = open(backup_path)
+    backup_data = csv.reader(backup_file, delimiter=',', doublequote=True)
 
-    
+    return render_template('show_backup.html',backup_data=backup_data, backup_path=backup_path)
+
+@app.route('/return_from_backup', methods=['POST'])
+def return_from_backup():
+    #get backup csv
+    backup_path = request.form.get('backup_path') 
+    backup_file = open(backup_path)
+    backup_data = csv.reader(backup_file, delimiter=',', doublequote=True)
+
+    #get original csv file to replace
+    csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)
+    csv_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed"
+    csv_name = "test.csv"
+    csv_path = csv_dir + "\\" + csv_name
+
+    csv_file = open(csv_path, 'w', newline='')
+    csv_writer = csv.writer(csv_file, 'mydia')
+    csv_writer.writerows(backup_data)
+    csv_file.close()
+
+    return redirect("/", code=301)

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Show Backup</title>
+    </head>
+    <body>
+        <h1>Backup</h1>
+        <table border="1">
+            {% for row in backup_data %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{cell}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+            <br />
+            <form method="POST" action="/return_from_backup">
+                <input type="hidden" name="backup_path" value="{{ backup_path }}" />
+                <input type="submit" value="Return from backup" />
+            </form>
+            
+    </body>
+</html>
