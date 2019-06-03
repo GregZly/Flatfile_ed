@@ -5,49 +5,35 @@ import glob
 
 app = Flask(__name__)
 
+#import custom csv function - temporary flask hack to use custom module 
+from library.csv_interface import get_csv, save_csv
+
+csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
+
 @app.route('/')
 @app.route('/index')
 def show_csv_data():
     #get csv
-    csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
-    csv_file = open(csv_path)
-    csv_data = csv.reader(csv_file, delimiter=',', doublequote=True)
-
+    csv_data = get_csv(csv_path)
     return render_template('modifiable_list.html',csv_data=csv_data)
 
 @app.route('/modify_row', methods=['POST'])
 def modify_row():
     #get csv
-    csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
-    csv_file = open(csv_path, 'r')
-    csv_reader = csv.reader(csv_file, delimiter=',', doublequote=True)
-    csv_data = []
-    for row in csv_reader:
-        csv_data.append(row)
-
+    csv_data = get_csv(csv_path)
+    
     #read data of selected row
     print(request.form['row_index'])
     mod_row = csv_data[int(request.form['row_index'])]
 
-    #close file at the end
-    csv_file.close()
     return render_template('forms/mod_row.html', mod_index=request.form['row_index'], mod_row=mod_row)
 
 @app.route('/save_mod', methods=['POST'])
 def save_modification():
-    #Add custom dialect to read and write CSV file correct
-    csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)    
-    csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
-    csv_file = open(csv_path, 'r', newline='')
-    csv_reader = csv.reader(csv_file, delimiter=',', doublequote=True)
-    csv_data = []
-    for row in csv_reader:
-        csv_data.append(row)
-
-    csv_file.close()
-
+    #get csv
+    csv_data = get_csv(csv_path)
+    
     #read data to new row
-    print(request.form)
     if request.form.get('submit') == 'modify':
         csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
         csv_data[int(request.form['mod_index'])] = csv_row.values()
@@ -55,34 +41,23 @@ def save_modification():
     elif request.form.get('submit') == 'save_as_new':
         csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
         csv_data.append(csv_row.values())
-    csv_file = open(csv_path, 'w', newline='')
-    csv_writer = csv.writer(csv_file, 'mydia')
-    csv_writer.writerows(csv_data)
-    csv_file.close()
-    
-    return show_csv_data()
+
+    #save data
+    save_csv(csv_data, csv_path)
+
+    return redirect("/", code=301)
 
 @app.route('/remove_row', methods=['POST'])
 def remove_row():
-    #Add custom dialect to read and write CSV file correct
-    csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)    
-    csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
-    csv_file = open(csv_path, 'r', newline='')
-    csv_reader = csv.reader(csv_file, delimiter=',', doublequote=True)
-    csv_data = []
-    for row in csv_reader:
-        csv_data.append(row)
-
-    csv_file.close()
+    #get csv
+    csv_data = get_csv(csv_path)
 
     #read data to new row
     print(request.form)
-    csv_data.remove(csv_data[int(request.form['row_index'])])   
-    
-    csv_file = open(csv_path, 'w', newline='')
-    csv_writer = csv.writer(csv_file, 'mydia')
-    csv_writer.writerows(csv_data)
-    csv_file.close()
+    csv_data.remove(csv_data[int(request.form['row_index'])])  
+
+    #save data
+    save_csv(csv_data, csv_path)
     
     return redirect("/", code=301)
 
@@ -107,7 +82,7 @@ def create_backup():
 
     backup_file.close()
 
-    return show_csv_data()
+    return redirect("/", code=301)
 
 @app.route('/list_of_backups')
 def list_of_backups():
@@ -134,20 +109,13 @@ def show_backup():
 
 @app.route('/return_from_backup', methods=['POST'])
 def return_from_backup():
-    #get backup csv
+    #get backup csv path
     backup_path = request.form.get('backup_path') 
-    backup_file = open(backup_path)
-    backup_data = csv.reader(backup_file, delimiter=',', doublequote=True)
+    
+    #get backup data
+    backup_data = get_csv(backup_path)
 
-    #get original csv file to replace
-    csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)
-    csv_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed"
-    csv_name = "test.csv"
-    csv_path = csv_dir + "\\" + csv_name
-
-    csv_file = open(csv_path, 'w', newline='')
-    csv_writer = csv.writer(csv_file, 'mydia')
-    csv_writer.writerows(backup_data)
-    csv_file.close()
+    #save data
+    save_csv(backup_data, csv_path)
 
     return redirect("/", code=301)

@@ -52,13 +52,18 @@
 	-[ZROBIONE]podgląd backupu
 	-[ZROBIONE]przycisk na podglądzie do przywrócenia
 	-[ZROBIONE]przywrócenie i powrót na pierwszą stronę po przywróceniu
--przeniesienie kopii kodu do oddzielnych funkcji
-	-otwieranie pliku csv
-	-zapis do pliku csv
-
-----testy do powyższych funkcjonalności
+-[ZROBIONE]przeniesienie kopii kodu do oddzielnych funkcji(czyli trochę inżnierii)
+	-[ZROBIONE]Rozwiązać problem podłączania własnych modułów do aplikacji Flask
+		-na chwilę obecną rozwiązaniem jest "krzywy" import biblioteki	
+		 poprzez odwołanie się do tego samego katalogu mimo że plik do którego jest
+		 wykonywany import już tam jest
+	-[ZROBIONE]otwieranie pliku csv
+	-[ZROBIONE]zapis do pliku csv
 
 -zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
+	-to musi być zrobione jako szablon dużej aplikacji flaska
+
+----testy do powyższych funkcjonalności
 
 -pobieranie pliku z ftp i zapis do ftp
 -bakup i przywracanie bakupu z ftp
