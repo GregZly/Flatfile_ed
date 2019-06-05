@@ -60,8 +60,11 @@
 	-[ZROBIONE]otwieranie pliku csv
 	-[ZROBIONE]zapis do pliku csv
 
--zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
-	-to musi być zrobione jako szablon dużej aplikacji flaska
+-[WIP]zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
+	-to musi być zrobione jako szablon dużej aplikacji flaska	
+	-zrobić oddzielnego brancha na tę zmianę
+	-zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
+	-porozdzielać funkcjonalności na modele, kontrolery i widoki
 
 ----testy do powyższych funkcjonalności
 
