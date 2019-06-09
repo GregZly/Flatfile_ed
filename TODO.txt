@@ -63,7 +63,7 @@
 -[WIP]zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
 	-to musi być zrobione jako szablon dużej aplikacji flaska	
 	-[ZROBIONE]zrobić oddzielnego brancha na tę zmianę
-	-[WIP]zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
+	-[ZROBIONE]zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
 			-[ZROBIONE]Rozwiązać dziwny problem z procedurą backupu - wygląda to tak jakby routing 
 				  na tę kontrektną procedurę przestawał działać po pierwszym kliknięciu i od razu szedł
 				  do routingu głównego.Nawet konsola pythona nie pokazuje przejścia na inny routuing
@@ -73,9 +73,8 @@
 						-[ZROBIONE]Chrome na Incognito - chodzi jak powinno
 				-[ZROBIONE]zamienić zwykły button na pełen formularz
 					-i teraz działa, widać więc że konstrukcji onclick href location trzeba raczej unikać
-						
-
-	-porozdzielać funkcjonalności na modele, kontrolery i widoki
+	-[WIP]Usunąć zbędne pliki 
+	-zrobić sensowny overwrite brancha master, branchem large_app
 
 ----testy do powyższych funkcjonalności
 
@@ -96,6 +95,8 @@
 		-gdy konfig jest niedostępny to 1 GB
 
 --testy aplikacji (w tym automatyczne)
+						
+-porozdzielać funkcjonalności na modele, kontrolery i widoki
 
 -poprawić layout aplikacji
 -uzupełnić dokumentację
