@@ -64,6 +64,17 @@
 	-to musi być zrobione jako szablon dużej aplikacji flaska	
 	-[ZROBIONE]zrobić oddzielnego brancha na tę zmianę
 	-[WIP]zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
+			-[ZROBIONE]Rozwiązać dziwny problem z procedurą backupu - wygląda to tak jakby routing 
+				  na tę kontrektną procedurę przestawał działać po pierwszym kliknięciu i od razu szedł
+				  do routingu głównego.Nawet konsola pythona nie pokazuje przejścia na inny routuing
+				-[ZROBIONE]Sprawdzić inną przeglądarke
+						-[ZROBIONE]Edge - chodzi jak powinno
+						-[ZROBIONE]Internet Explorer - chodzi jak powinno
+						-[ZROBIONE]Chrome na Incognito - chodzi jak powinno
+				-[ZROBIONE]zamienić zwykły button na pełen formularz
+					-i teraz działa, widać więc że konstrukcji onclick href location trzeba raczej unikać
+						
+
 	-porozdzielać funkcjonalności na modele, kontrolery i widoki
 
 ----testy do powyższych funkcjonalności

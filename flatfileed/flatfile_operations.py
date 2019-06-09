@@ -31,7 +31,6 @@ def add_row():
 
         #read data to new row
         csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
-        #csv_data.append(csv_row.values())
         csv_data.append([csv_row.values()])
         
         #debug
@@ -91,35 +90,22 @@ def remove_row():
     
     return redirect("/", code=301)
 
-@bp.route('/create_new_backup')
+@bp.route('/do_bak', methods=['POST'])
 def create_backup():
-    print("OK")
-    #open csv file
-    #csv_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed"
-    #csv_name = "test.csv"
-    #csv_path = csv_dir + "\\" + csv_name
-    #csv_file = open(csv_path, 'r', newline='')
-    
     #get csv
     csv_data = get_csv(csv_path)
-
 
     #init backup copy of csv file
     backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
     backup_time = datetime.datetime.today().strftime("%Y%m%d_%H_%M_%S")
     backup_file_name = backup_time + csv_name + ".bak"
     backup_path = backup_dir + "\\" + backup_file_name
-    print(backup_path)
     backup_file = open(backup_path,'x', newline='')
     backup_file.close()
 
-    #save csv_file to backup
-    #for line in csv_file:
-    #    backup_file.write(line)
     #save data to backup
     save_csv(csv_data, backup_path)
     
-
     return redirect("/", code=301)
 
 @bp.route('/list_of_backups')
@@ -140,8 +126,7 @@ def list_of_backups():
 def show_backup():
     #get backup csv
     backup_path = request.form.get('backup_path') 
-    backup_file = open(backup_path)
-    backup_data = csv.reader(backup_file, delimiter=',', doublequote=True)
+    backup_data = get_csv(backup_path)
 
     return render_template('show_backup.html',backup_data=backup_data, backup_path=backup_path)
 
