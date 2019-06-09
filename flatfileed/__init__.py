@@ -4,7 +4,7 @@ from flask import Flask
 
 def create_app(test_config=None):
     #create and configure application
-    app = Flask(__nam__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY = 'dev'
     )
@@ -27,4 +27,7 @@ def create_app(test_config=None):
     def hello():
         return "Hello World"
     
+    from . import flatfile_operations
+    app.register_blueprint(flatfile_operations.bp)
+
     return app

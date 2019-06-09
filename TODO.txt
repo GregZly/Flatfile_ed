@@ -63,7 +63,7 @@
 -[WIP]zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
 	-to musi być zrobione jako szablon dużej aplikacji flaska	
 	-[ZROBIONE]zrobić oddzielnego brancha na tę zmianę
-	-zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
+	-[WIP]zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
 	-porozdzielać funkcjonalności na modele, kontrolery i widoki
 
 ----testy do powyższych funkcjonalności
