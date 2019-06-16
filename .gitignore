@@ -3,3 +3,15 @@
 
 #ignore created backups in backup folder
 /backup/*
+
+#ignore virtual env
+/venv
+
+#ignore custom module installation files
+/flatfileed.egg-info
+
+#ignore visual studio code settings folder
+/.vscode
+
+#ignore pytest cache folder and files
+/.pytest_cache

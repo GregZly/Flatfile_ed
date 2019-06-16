@@ -73,21 +73,52 @@
 						-[ZROBIONE]Chrome na Incognito - chodzi jak powinno
 				-[ZROBIONE]zamienić zwykły button na pełen formularz
 					-i teraz działa, widać więc że konstrukcji onclick href location trzeba raczej unikać
-	-[WIP]Usunąć zbędne pliki 
-	-zrobić sensowny overwrite brancha master, branchem large_app
+	-[ZROBIONE]Usunąć zbędne pliki 
+	-[ZROBIONE]zrobić sensowny overwrite brancha master, branchem large_app
+		-chyba wszystko zrobiłem ok. widze te pliki których chcę używać i mam brancha master
 
-----testy do powyższych funkcjonalności
+-[WIP]testy do powyższych funkcjonalności
+	-[ZROBIONE]poczytać jak robić testy jednostkowe dla flaska
+		-[ZROBIONE]pytest 
+			-na potrzeby tego projektu nie ma sensu się w to zagłębiać
+			-najpierw zrobię jak mi się wydaje że jest dobrze a douczać się będę na bieżąco
+			-następny pet project będzie zakładać użycie tdd od początku
+		-[ZROBIONE]materiały flaska 
+			-najpierw jedna pytest trzeba przerobić bo zupełnie nic o tym nie wiem
+			-dużo opisanych sposobów na testowanie
+	-[ZROBIONE]Rozwiązać problem użycia przez VS Code całego pythona zamiast venv
+		-rozwiązanie: Zamknąć folder nadrzędny w VS Code i otworzyć folder w wybranym projekcie.
+				      Wtedy, o dziwo venv jakoś się załapuje do listy
+	-[WIP]otestować wszystkie pliki
+		-[ZROBIONE]csv_interface
+			-[ZROBIONE]funkcja get_csv
+				-[ZROBIONE]poprawny odczyt danych
+				-[ZROBIONE]zwrócenie błędu przy błędnym odczycie(tu można dodać try-catch)
+					-dodano try except żeby zwracać komunikat błędu
+					-w sumie to wyszło trochę tdd bo najpierw zrobiłem wyszukiwanie błędu a potem dodałem 
+					 funkcję zwracania tego błędu przy błędnym zachowaniu :-)
+			-[ZROBIONE]funkcja save_csv
+				-[ZROBIONE]poprawny zapis
+				-[ZROBIONE]błędny zapis - brak uprawnień
+					-tutaj uświadmiłem sobie że mógłbym lock-ować plik 
+					 gdyby dwóch użytkowników chciało go edytować jednocześnie
+		-flatfile_operations
+	-poczytać czy mogę zrobić coś więcej i jak sobie pracować przy czymś z rodzaju TDD
 
+-rozwiązać problem konieczności używania pełnych ścieżek do plików
+	-zamiast tego powinny być ścieżki względne, czyli do samego katalogu aplikacji
 -pobieranie pliku z ftp i zapis do ftp
 -bakup i przywracanie bakupu z ftp
 -limitowanie dostępu do aplikacji (login i pass)
 -zapis do konfigu i odczyt z konfigu ustawień ftp ( w formie zakodowanej)
+-lockowanie edytowanego pliku za pomocą biblioteki filelock
 
 ----testy do funkcjonalności wyżej
 
 -konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
 	-do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
 		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)  
+	-dodać test jednostkowe czy dane zapisywane są zgodne z formatem
 
 -logowanie zadrzeń do pliku loga
 	-wywalanie aplikacji gdy wielkość pliku loga przekroczy limit bezpieczeństwa
