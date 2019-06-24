@@ -28,6 +28,7 @@ def create_app(test_config=None):
         return "Hello World"
     
     from . import flatfile_operations
-    app.register_blueprint(flatfile_operations.bp)
+    with app.app_context():
+        app.register_blueprint(flatfile_operations.bp)
 
     return app

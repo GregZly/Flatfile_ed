@@ -102,7 +102,32 @@
 				-[ZROBIONE]błędny zapis - brak uprawnień
 					-tutaj uświadmiłem sobie że mógłbym lock-ować plik 
 					 gdyby dwóch użytkowników chciało go edytować jednocześnie
-		-flatfile_operations
+		-[WIP]flatfile_operations
+			-Testy które mogę przeprowadzić
+				-zwracany kod protokołu (200, 301 i kody błędów)
+				-elementy html które są na stronie
+			-[ZROBIONE]Przygotować oddzielny runner do testowania aplikacji
+				-chyba się udało, bo przykład ze strony flaska działa
+			-[WIP]routing / i /index
+				-[ZROBIONE]czy jest kod 200 przy wejściu
+				-[WIP]czy jest kod 301 przy przekierowaniu
+				-[ZROBIONE]Czy pojawił się element 'Modifiable CSV' na stronie
+				-[WIP]czy pokazał się odczyt z pliku csv
+					-tu by trzeba ten plik odczytać procedurą CSV i sprawdzić 
+					 czy pierwsza i ostatnia linijka się pojawiła
+					 	-najlepiej to byłoby przerobić aplikację by plik do flatfile_operations
+						 był wczytywany z konfigu. Wtedy konfig testowy wszystko by podmieniał
+				-błędy
+			-add row
+				-udane
+				-nieudane
+			-mod row
+			-save mod
+			-remove row
+			-do backup
+			-list of backups
+			-return from backup
+
 	-poczytać czy mogę zrobić coś więcej i jak sobie pracować przy czymś z rodzaju TDD
 
 -rozwiązać problem konieczności używania pełnych ścieżek do plików
@@ -131,3 +156,6 @@
 
 -poprawić layout aplikacji
 -uzupełnić dokumentację
+
+-dodać możliwość łatwego deploymentu na inne maszyny
+	-przećwiczyć temat na raspberry pi

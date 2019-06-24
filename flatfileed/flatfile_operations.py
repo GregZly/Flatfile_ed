@@ -1,17 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint
+from flask import current_app as app
+from flask_assets import Environment
 import csv
 import datetime
 import glob
 
 bp = Blueprint('flatfile_operations', __name__)
 
-#app = Flask(__name__)
 
 #import custom csv function - temporary flask hack to use custom module 
 from .csv_interface import get_csv, save_csv
 
 csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
 csv_name = "test.csv"
+
+assets = Environment(app)
+
+print(assets.config)
+#csv_path = assets.config['CSV_PATH']
+#csv_name = assets.config['CSV_NAME']
 
 @bp.route('/')
 @bp.route('/index')
