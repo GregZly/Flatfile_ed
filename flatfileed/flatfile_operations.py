@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint
 from flask import current_app as app
-from flask_assets import Environment
+#from flask_assets import Environment
 import csv
 import datetime
 import glob
@@ -14,17 +14,11 @@ from .csv_interface import get_csv, save_csv
 csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
 csv_name = "test.csv"
 
-assets = Environment(app)
-
-print(assets.config)
-#csv_path = assets.config['CSV_PATH']
-#csv_name = assets.config['CSV_NAME']
-
 @bp.route('/')
 @bp.route('/index')
 def show_csv_data():
     #get csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(app.config['CSV_PATH'])
     return render_template('modifiable_list.html',csv_data=csv_data)
 
 
@@ -34,7 +28,7 @@ def add_row():
         return render_template('forms/append_row.html')
     elif request.method == 'POST':
         #get csv
-        csv_data = get_csv(csv_path)
+        csv_data = get_csv(app.config['CSV_PATH'])
 
         #read data to new row
         csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
@@ -48,7 +42,7 @@ def add_row():
             csv_data.sort()
 
         #save data
-        save_csv(csv_data, csv_path)
+        save_csv(csv_data, app.config['CSV_PATH'])
 
         return redirect("/", code=301)
 
@@ -56,7 +50,7 @@ def add_row():
 @bp.route('/modify_row', methods=['POST'])
 def modify_row():
     #get csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(app.config['CSV_PATH'])
     
     #read data of selected row
     print(request.form['row_index'])
@@ -67,7 +61,7 @@ def modify_row():
 @bp.route('/save_mod', methods=['POST'])
 def save_modification():
     #get csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(app.config['CSV_PATH'])
     
     #read data to new row
     if request.form.get('submit') == 'modify':
@@ -79,33 +73,33 @@ def save_modification():
         csv_data.append(csv_row.values())
 
     #save data
-    save_csv(csv_data, csv_path)
+    save_csv(csv_data, app.config['CSV_PATH'])
 
     return redirect("/", code=301)
 
 @bp.route('/remove_row', methods=['POST'])
 def remove_row():
     #get csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(app.config['CSV_PATH'])
 
     #read data to new row
     print(request.form)
     csv_data.remove(csv_data[int(request.form['row_index'])])  
 
     #save data
-    save_csv(csv_data, csv_path)
+    save_csv(csv_data, app.config['CSV_PATH'])
     
     return redirect("/", code=301)
 
 @bp.route('/do_bak', methods=['POST'])
 def create_backup():
     #get csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(app.config['CSV_PATH'])
 
     #init backup copy of csv file
     backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
     backup_time = datetime.datetime.today().strftime("%Y%m%d_%H_%M_%S")
-    backup_file_name = backup_time + csv_name + ".bak"
+    backup_file_name = backup_time + app.config['CSV_NAME'] + ".bak"
     backup_path = backup_dir + "\\" + backup_file_name
     backup_file = open(backup_path,'x', newline='')
     backup_file.close()
@@ -146,6 +140,6 @@ def return_from_backup():
     backup_data = get_csv(backup_path)
 
     #save data
-    save_csv(backup_data, csv_path)
+    save_csv(backup_data, app.config['CSV_PATH'])
 
     return redirect("/", code=301)

@@ -113,9 +113,9 @@
 				-[WIP]czy jest kod 301 przy przekierowaniu
 				-[ZROBIONE]Czy pojawił się element 'Modifiable CSV' na stronie
 				-[WIP]czy pokazał się odczyt z pliku csv
-					-tu by trzeba ten plik odczytać procedurą CSV i sprawdzić 
+					-[WIP]tu by trzeba ten plik odczytać procedurą CSV i sprawdzić 
 					 czy pierwsza i ostatnia linijka się pojawiła
-					 	-najlepiej to byłoby przerobić aplikację by plik do flatfile_operations
+					 	-[ZROBIONE]najlepiej to byłoby przerobić aplikację by plik do flatfile_operations
 						 był wczytywany z konfigu. Wtedy konfig testowy wszystko by podmieniał
 				-błędy
 			-add row
