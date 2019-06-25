@@ -108,19 +108,22 @@
 				-elementy html które są na stronie
 			-[ZROBIONE]Przygotować oddzielny runner do testowania aplikacji
 				-chyba się udało, bo przykład ze strony flaska działa
-			-[WIP]routing / i /index
+			-[ZROBIONE]routing / i /index
 				-[ZROBIONE]czy jest kod 200 przy wejściu
-				-[WIP]czy jest kod 301 przy przekierowaniu
 				-[ZROBIONE]Czy pojawił się element 'Modifiable CSV' na stronie
-				-[WIP]czy pokazał się odczyt z pliku csv
-					-[WIP]tu by trzeba ten plik odczytać procedurą CSV i sprawdzić 
+				-[ZROBIONE]czy pokazał się odczyt z pliku csv
+					-[ZROBIONE]tu by trzeba ten plik odczytać procedurą CSV i sprawdzić 
 					 czy pierwsza i ostatnia linijka się pojawiła
 					 	-[ZROBIONE]najlepiej to byłoby przerobić aplikację by plik do flatfile_operations
 						 był wczytywany z konfigu. Wtedy konfig testowy wszystko by podmieniał
-				-błędy
+				-[ZROBIONE]błędy
+					-[NIE DA SIĘ]próba odczytu pliku który ma zablokowane prawa do odczytu
+						-nie da się na windows zablokować sobie samemu pliku
 			-add row
 				-udane
+					-czy jest kod 301 przy przekierowaniu
 				-nieudane
+					-czy jest kod 301 przy przekierowaniu
 			-mod row
 			-save mod
 			-remove row

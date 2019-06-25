@@ -17,10 +17,12 @@ csv_name = "test.csv"
 @bp.route('/')
 @bp.route('/index')
 def show_csv_data():
-    #get csv
-    csv_data = get_csv(app.config['CSV_PATH'])
-    return render_template('modifiable_list.html',csv_data=csv_data)
-
+    try:
+        #get csv
+        csv_data = get_csv(app.config['CSV_PATH'])
+        return render_template('modifiable_list.html',csv_data=csv_data)
+    except PermissionError:
+        return "ERROR! Configured file unreadable!"
 
 @bp.route('/add_row',methods=['GET','POST'])
 def add_row():
