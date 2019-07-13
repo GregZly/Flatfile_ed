@@ -119,11 +119,24 @@
 				-[ZROBIONE]błędy
 					-[NIE DA SIĘ]próba odczytu pliku który ma zablokowane prawa do odczytu
 						-nie da się na windows zablokować sobie samemu pliku
-			-add row
-				-udane
-					-czy jest kod 301 przy przekierowaniu
-				-nieudane
-					-czy jest kod 301 przy przekierowaniu
+			-[ZROBIONE]add row
+				-[ZROBIONE]metoda GET
+					-[ZROBIONE]czy jest kod 200
+					-[ZROBIONE]czy pojawiają się elementy formularza
+				-[ZROBIONE]metoda POST
+					-[ZROBIONE]udane bez sortowania
+						-[ZROBIONE]czy nowy wiersz pojawił się w pliku
+							-[ZROBIONE]Naprawić błąd zapisu pliku (zapisuje dane w dict())
+						-[ZROBIONE]czy jest kod 200 
+					-[ZROBIONE]udane z sortowaniem
+						-[ZROBIONE]czy nowy wiersz jest
+						-[ZROBIONE]czy wprowadzony wiersz pojawił się w spodziewanym miejscu
+						-[ZROBIONE]czy jest kod 200 przy przekierowaniu
+					-[ZROBIONE]nieudane 
+						-[ZROBIONE]czy jest błąd blokady pliku
+						-[ZROBIONE]czy wprowadzany wiersz nie istnije
+						-[ZROBIONE]czy jest kod 200 przy przekierowaniu
+
 			-mod row
 			-save mod
 			-remove row
@@ -140,6 +153,7 @@
 -limitowanie dostępu do aplikacji (login i pass)
 -zapis do konfigu i odczyt z konfigu ustawień ftp ( w formie zakodowanej)
 -lockowanie edytowanego pliku za pomocą biblioteki filelock
+-zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
 
 ----testy do funkcjonalności wyżej
 

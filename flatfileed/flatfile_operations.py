@@ -31,22 +31,21 @@ def add_row():
     elif request.method == 'POST':
         #get csv
         csv_data = get_csv(app.config['CSV_PATH'])
+        try:
+            #read data to new row
+            csv_row = {k: v for k, v in request.form.items() if k.startswith('col')} 
+            csv_data.append(list(csv_row.values()))
 
-        #read data to new row
-        csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
-        csv_data.append([csv_row.values()])
-        
-        #debug
-        print(csv_data)
+            #sort when check box marked
+            if request.form.get('sort') == 'on':
+                csv_data.sort()
 
-        #sort when check box marked
-        if request.form.get('sort') == 'on':
-            csv_data.sort()
+            #save data
+            save_csv(csv_data, app.config['CSV_PATH'])
 
-        #save data
-        save_csv(csv_data, app.config['CSV_PATH'])
-
-        return redirect("/", code=301)
+            return redirect("/", code=301)
+        except PermissionError:
+            return "ERROR! Cannot write to file!"
 
 
 @bp.route('/modify_row', methods=['POST'])
