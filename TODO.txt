@@ -137,10 +137,45 @@
 						-[ZROBIONE]czy wprowadzany wiersz nie istnije
 						-[ZROBIONE]czy jest kod 200 przy przekierowaniu
 
-			-mod row
-			-save mod
-			-remove row
-			-do backup
+			-[ZROBIONE]mod row
+				-[ZROBIONE]czy formularz do modyfikacji pokazał się
+				-[ZROBIONE]czy dane z wybranego wiersza zostały przekazane do formularza
+				-[ZROBIONE]czy jest kod 200 przy przeglądarce
+			-[ZROBIONE]save mod
+				-[ZROBIONE]modify
+					-[ZROBIONE]sukces modyfikacji wybranego wiersza
+						-[ZROBIONE]wprowadzenie postem wiersza do pliku CSV
+						-[ZROBIONE]kod 200 z przeglądarki
+					-[ZROBIONE]porażka modyfikacji wybranego wiersza (nieistniejący indeks)
+						-[ZROBIONE]wprowadzenie postem wiersza na nieistniejący indeks
+						-[ZROBIONE]komunikat błędu
+						-[ZROBIONE]kod 200 z przeglądarki
+				-[ZROBIONE]save_as_new
+					-[ZROBIONE]sukces dodania nowego wiersza
+						-[ZROBIONE]wprowadzenie nowego wiersza do pliku
+						-[ZROBIONE]kod 200
+					-[ZROBIONE]porażka
+						-[ZROBIONE]zablokowany plik 
+						-[ZROBIONE]odbiór wyjątku
+						-[ZROBIONE]kod 200
+			-[ZROBIONE]remove row
+				-[ZROBIONE]success
+					-[ZROBIONE]udane usunięcie
+					-[ZROBIONE]kod 200
+				-[ZROBIONE]porażka
+					-[ZROBIONE]zablokowany plik 
+					-[ZROBIONE]komunikat błędu
+					-[ZROBIONE]potwierdzenie że linia dalej istnieje
+					-[ZROBIONE]kod 200 
+			-[WIP]do backup
+				-sukces	
+					-utworzenie nowego pliku
+					-pliki backup i orginał są takie same
+					-kod 200
+				-porażka
+					-blokada folderu do tworzenia backupu
+					-nie można utworzyć pliku
+					-kod 200
 			-list of backups
 			-return from backup
 

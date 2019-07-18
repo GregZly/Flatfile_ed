@@ -64,33 +64,40 @@ def save_modification():
     #get csv
     csv_data = get_csv(app.config['CSV_PATH'])
     
-    #read data to new row
-    if request.form.get('submit') == 'modify':
-        csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
-        csv_data[int(request.form['mod_index'])] = csv_row.values()
+    try:
+        #read data to new row
+        if request.form.get('submit') == 'modify':
+            csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
+            csv_data[int(request.form['mod_index'])] = csv_row.values()
 
-    elif request.form.get('submit') == 'save_as_new':
-        csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
-        csv_data.append(csv_row.values())
+        elif request.form.get('submit') == 'save_as_new':
+            csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
+            csv_data.append(csv_row.values())
 
-    #save data
-    save_csv(csv_data, app.config['CSV_PATH'])
+        #save data
+        save_csv(csv_data, app.config['CSV_PATH'])
 
-    return redirect("/", code=301)
+        return redirect("/", code=301)
+    except IndexError:
+        return 'Error! There is no entry with provided index'
+    except PermissionError:
+        return 'ERROR! Cannot write to file!'
 
 @bp.route('/remove_row', methods=['POST'])
 def remove_row():
     #get csv
     csv_data = get_csv(app.config['CSV_PATH'])
 
-    #read data to new row
-    print(request.form)
-    csv_data.remove(csv_data[int(request.form['row_index'])])  
+    try:
+        #read data to new row
+        csv_data.remove(csv_data[int(request.form['row_index'])])  
 
-    #save data
-    save_csv(csv_data, app.config['CSV_PATH'])
+        #save data
+        save_csv(csv_data, app.config['CSV_PATH'])
     
-    return redirect("/", code=301)
+        return redirect("/", code=301)
+    except PermissionError:
+        return 'ERROR! Cannot write to file!'
 
 @bp.route('/do_bak', methods=['POST'])
 def create_backup():
