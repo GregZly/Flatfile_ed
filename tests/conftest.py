@@ -10,7 +10,8 @@ def app():
     app = create_app({
         'TESTING': True,
         'CSV_PATH': "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\test_test.csv",
-        'CSV_NAME': "test_test.csv"
+        'CSV_NAME': "test_test.csv",
+        'BACKUP_DIR' : "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\backup"
     })
     yield app
 

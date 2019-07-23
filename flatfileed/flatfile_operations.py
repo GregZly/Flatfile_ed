@@ -105,7 +105,7 @@ def create_backup():
     csv_data = get_csv(app.config['CSV_PATH'])
 
     #init backup copy of csv file
-    backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
+    backup_dir = app.config['BACKUP_DIR']
     backup_time = datetime.datetime.today().strftime("%Y%m%d_%H_%M_%S")
     backup_file_name = backup_time + app.config['CSV_NAME'] + ".bak"
     backup_path = backup_dir + "\\" + backup_file_name
@@ -120,7 +120,7 @@ def create_backup():
 @bp.route('/list_of_backups')
 def list_of_backups():
     #generate list of backup files
-    backup_dir = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
+    backup_dir = app.config['BACKUP_DIR']
     backup_list = glob.glob(backup_dir + "\\*.bak")
 
     #backup list for view

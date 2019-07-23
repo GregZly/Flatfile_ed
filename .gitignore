@@ -4,6 +4,9 @@
 #ignore created backups in backup folder
 /backup/*
 
+#ignore created backups in test backup folder
+/tests/backup/*
+
 #ignore virtual env
 /venv
 

@@ -167,15 +167,11 @@
 					-[ZROBIONE]komunikat błędu
 					-[ZROBIONE]potwierdzenie że linia dalej istnieje
 					-[ZROBIONE]kod 200 
-			-[WIP]do backup
-				-sukces	
-					-utworzenie nowego pliku
-					-pliki backup i orginał są takie same
-					-kod 200
-				-porażka
-					-blokada folderu do tworzenia backupu
-					-nie można utworzyć pliku
-					-kod 200
+			-[ZROBIONE]do backup
+				-[ZROBIONE]sukces	
+					-[ZROBIONE]utworzenie nowego pliku
+					-[ZROBIONE]pliki backup i orginał są takie same
+					-[ZROBIONE]kod 200
 			-list of backups
 			-return from backup
 
