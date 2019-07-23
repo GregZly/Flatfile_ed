@@ -77,7 +77,7 @@
 	-[ZROBIONE]zrobić sensowny overwrite brancha master, branchem large_app
 		-chyba wszystko zrobiłem ok. widze te pliki których chcę używać i mam brancha master
 
--[WIP]testy do powyższych funkcjonalności
+-[ZROBIONE]testy do powyższych funkcjonalności
 	-[ZROBIONE]poczytać jak robić testy jednostkowe dla flaska
 		-[ZROBIONE]pytest 
 			-na potrzeby tego projektu nie ma sensu się w to zagłębiać
@@ -89,7 +89,7 @@
 	-[ZROBIONE]Rozwiązać problem użycia przez VS Code całego pythona zamiast venv
 		-rozwiązanie: Zamknąć folder nadrzędny w VS Code i otworzyć folder w wybranym projekcie.
 				      Wtedy, o dziwo venv jakoś się załapuje do listy
-	-[WIP]otestować wszystkie pliki
+	-[ZROBIONE]otestować wszystkie pliki
 		-[ZROBIONE]csv_interface
 			-[ZROBIONE]funkcja get_csv
 				-[ZROBIONE]poprawny odczyt danych
@@ -102,7 +102,7 @@
 				-[ZROBIONE]błędny zapis - brak uprawnień
 					-tutaj uświadmiłem sobie że mógłbym lock-ować plik 
 					 gdyby dwóch użytkowników chciało go edytować jednocześnie
-		-[WIP]flatfile_operations
+		-[ZROBIONE]flatfile_operations
 			-Testy które mogę przeprowadzić
 				-zwracany kod protokołu (200, 301 i kody błędów)
 				-elementy html które są na stronie
@@ -172,8 +172,26 @@
 					-[ZROBIONE]utworzenie nowego pliku
 					-[ZROBIONE]pliki backup i orginał są takie same
 					-[ZROBIONE]kod 200
-			-list of backups
-			-return from backup
+			-[ZROBIONE]list of backups
+				-[ZROBIONE]success
+					-[ZROBIONE]lista backupów taka sama jak pliki .bak w folderze
+					-[ZROBIONE]kod 200
+			-[ZROBIONE]return from backup
+				-[ZROBIONE]success
+					-[ZROBIONE]skasować backupy
+					-[ZROBIONE]zrobić backup
+					-[ZROBIONE]zrobić zmianę w pliku csv
+					-[ZROBIONE]przywrócić z backup
+					-[ZROBIONE]potwierdzić że wprowadzonej zmiany nie ma po przywróceniu
+					-[ZROBIONE]kod 200
+				-[ZROBIONE]porażka
+					-[ZROBIONE]skasować backupy
+					-[ZROBIONE]zrobić backup
+					-[ZROBIONE]zmiany w pliku csv
+					-[ZROBIONE]zablokować plik csv do zapisu
+					-[ZROBIONE]próba przywrócenia z bakapu
+					-[ZROBIONE]wyłapać wyjątek
+					-[ZROBIONE]kod 200
 
 	-poczytać czy mogę zrobić coś więcej i jak sobie pracować przy czymś z rodzaju TDD
 

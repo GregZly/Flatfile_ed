@@ -141,13 +141,16 @@ def show_backup():
 
 @bp.route('/return_from_backup', methods=['POST'])
 def return_from_backup():
-    #get backup csv path
-    backup_path = request.form.get('backup_path') 
+    try:
+        #get backup csv path
+        backup_path = request.form.get('backup_path') 
     
-    #get backup data
-    backup_data = get_csv(backup_path)
+        #get backup data
+        backup_data = get_csv(backup_path)
 
-    #save data
-    save_csv(backup_data, app.config['CSV_PATH'])
+        #save data
+        save_csv(backup_data, app.config['CSV_PATH'])
 
-    return redirect("/", code=301)
+        return redirect("/", code=301)
+    except PermissionError:
+        return 'ERROR! Cannot write to file!'
