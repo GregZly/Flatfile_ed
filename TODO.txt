@@ -60,7 +60,7 @@
 	-[ZROBIONE]otwieranie pliku csv
 	-[ZROBIONE]zapis do pliku csv
 
--[WIP]zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
+-[ZROBIONE]zebranie wszystkich klocków do jednej aplikacji (przy pracy na lokalnym pliku)
 	-to musi być zrobione jako szablon dużej aplikacji flaska	
 	-[ZROBIONE]zrobić oddzielnego brancha na tę zmianę
 	-[ZROBIONE]zreorganizować uruchamianie aplikacji - prawidłowe użycie run i modułów
@@ -193,10 +193,23 @@
 					-[ZROBIONE]wyłapać wyjątek
 					-[ZROBIONE]kod 200
 
-	-poczytać czy mogę zrobić coś więcej i jak sobie pracować przy czymś z rodzaju TDD
-
--rozwiązać problem konieczności używania pełnych ścieżek do plików
+-[ZROBIONE]rozwiązać problem konieczności używania pełnych ścieżek do plików
 	-zamiast tego powinny być ścieżki względne, czyli do samego katalogu aplikacji
+	-[ZROBIONE]__init__.py 
+		-[ZROBIONE]zacząć od wywalenia podwójnych slashy
+			-rozwiązaniem jest biblioteka pathlib
+	-[ZROBIONE]config.py 
+		-[ZROBIONE]wywalić slashe
+		-[ZROBIONE]dodać tylko ścieżki względne
+	-[ZROBIONE]flatfile_operations
+		-[ZROBIONE]Podmiana w CSV_PATH
+		-[ZROBIONE]list_of_backups
+			-[ZROBIONE]Wczytywanie ścieżek po nowemu
+			-[ZROBIONE]na formularzu pokazywanie tylko nazw plików
+			-[ZROBIONE]update testu
+		-[ZROBIONE]show_backup
+		-[ZROBIONE]Conftest i reszta błędów ścieżek
+-wydzielić funkcjonalności backupów do oddzielnego modułu 
 -pobieranie pliku z ftp i zapis do ftp
 -bakup i przywracanie bakupu z ftp
 -limitowanie dostępu do aplikacji (login i pass)

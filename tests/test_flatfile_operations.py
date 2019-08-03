@@ -3,10 +3,16 @@ from flatfileed import flatfile_operations
 from flatfileed.csv_interface import get_csv, save_csv
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 import glob
+from pathlib import Path
 
+#Path to folder
+local_path = Path.cwd() / "tests"
 
-csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\test_test.csv"
-backup_directory = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\backup"
+CSV_NAME = "test_test.csv"
+CSV_PATH = local_path / CSV_NAME
+BACKUP_DIR = local_path / "backup"
+csv_path = CSV_PATH
+backup_directory = BACKUP_DIR
 
 def test_index(client):
     response = client.get('/index')
@@ -241,11 +247,11 @@ def test_create_backup_successful(client):
 
     #get list of backups to find path to the latest created backup
     backup_dir = backup_directory
-    backup_list = glob.glob(backup_dir + "\\*.bak")
+    backup_list = list(backup_dir.glob("*.bak"))
     
     backups = []
     for path in backup_list:
-        backups.append([path, path.replace(backup_dir + "\\",'')])
+        backups.append([str(path), path.name])
     backups = sorted(backups, key=lambda tup: tup[1],reverse=True)
 
     bak_path = backups[0][0]
@@ -265,14 +271,14 @@ def test_create_backup_successful(client):
 def test_list_of_backups(client):
     #get list of .bak files in backup folder
     backup_dir = backup_directory
-    backup_list = glob.glob(backup_dir + "\\*.bak")
+    backup_list = list(backup_dir.glob("*.bak"))
     
     #show backup list
     response = client.get('/list_of_backups')
 
     #check if all elements of backup dir are in response data
     for backup_file in backup_list:
-        assert backup_file.encode() in response.data
+        assert backup_file.name.encode() in response.data
     
     #check if response returned code 200
     assert response.status_code == 200 
@@ -280,7 +286,8 @@ def test_list_of_backups(client):
 
 def test_return_backup_success(client):
     #remove all backups
-    filelist = glob.glob(os.path.join(backup_directory, "*.bak"))
+    backup_dir = backup_directory
+    filelist = list(backup_dir.glob("*.bak"))
     if len(filelist) > 0:
         for f in filelist:
             os.remove(f)
@@ -290,8 +297,7 @@ def test_return_backup_success(client):
     assert resp1.status_code == 200 
 
     #get list of .bak files in backup folder
-    backup_dir = backup_directory
-    backup_list = glob.glob(backup_dir + "\\*.bak")
+    backup_list = list(backup_dir.glob("*.bak"))
     backup_path = backup_list[0]
 
     #data to write
@@ -318,7 +324,8 @@ def test_return_backup_success(client):
 
 def test_return_backup_failure(client):
     #remove all backups
-    filelist = glob.glob(os.path.join(backup_directory, "*.bak"))
+    backup_dir = backup_directory
+    filelist = list(backup_dir.glob("*.bak"))
     if len(filelist) > 0:
         for f in filelist:
             os.remove(f)
@@ -328,8 +335,7 @@ def test_return_backup_failure(client):
     assert resp1.status_code == 200 
 
     #get list of .bak files in backup folder
-    backup_dir = backup_directory
-    backup_list = glob.glob(backup_dir + "\\*.bak")
+    backup_list = list(backup_dir.glob("*.bak"))
     
     backup_path = backup_list[0]
 

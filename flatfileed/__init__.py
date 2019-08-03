@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from flask import Flask
 
@@ -8,10 +9,12 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY = 'devvvv'
     )
+    
+    config_file = Path(app.root_path) / "config.py"
 
     if test_config is None:
         #Load instance config, if it exists, when not testing
-        app.config.from_pyfile(app.root_path + '\\config.py',silent=True)
+        app.config.from_pyfile(config_file,silent=True)
     else:
         #Load the test config if passed in
         app.config.from_mapping(test_config)

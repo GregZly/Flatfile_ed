@@ -1,12 +1,16 @@
-
-#Path to used locally CSV FILE
-CSV_PATH = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
+from pathlib import Path
 
 #Name of used file
 CSV_NAME = "test.csv"
+
+#Path to folder
+local_path = Path.cwd()
+
+#Path to used locally CSV FILE
+CSV_PATH = local_path / CSV_NAME
 
 #test
 SECRET_KEY = 'DEVEVE'
 
 #Backup directory
-BACKUP_DIR = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\backup"
+BACKUP_DIR = local_path / "backup"

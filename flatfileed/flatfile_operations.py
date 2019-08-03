@@ -5,14 +5,13 @@ import csv
 import datetime
 import glob
 
-bp = Blueprint('flatfile_operations', __name__)
+from pathlib import Path
 
+bp = Blueprint('flatfile_operations', __name__)
 
 #import custom csv function - temporary flask hack to use custom module 
 from .csv_interface import get_csv, save_csv
 
-csv_path = "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\test.csv"
-csv_name = "test.csv"
 
 @bp.route('/')
 @bp.route('/index')
@@ -105,10 +104,10 @@ def create_backup():
     csv_data = get_csv(app.config['CSV_PATH'])
 
     #init backup copy of csv file
-    backup_dir = app.config['BACKUP_DIR']
+    backup_dir = Path(app.config['BACKUP_DIR'])
     backup_time = datetime.datetime.today().strftime("%Y%m%d_%H_%M_%S")
     backup_file_name = backup_time + app.config['CSV_NAME'] + ".bak"
-    backup_path = backup_dir + "\\" + backup_file_name
+    backup_path = backup_dir / backup_file_name
     backup_file = open(backup_path,'x', newline='')
     backup_file.close()
 
@@ -120,13 +119,13 @@ def create_backup():
 @bp.route('/list_of_backups')
 def list_of_backups():
     #generate list of backup files
-    backup_dir = app.config['BACKUP_DIR']
-    backup_list = glob.glob(backup_dir + "\\*.bak")
+    backup_dir = Path(app.config['BACKUP_DIR'])
+    backup_list = list(backup_dir.glob("*.bak"))
 
     #backup list for view
     backups = []
     for path in backup_list:
-        backups.append([path, path.replace(backup_dir + "\\",'')])
+        backups.append([str(path), path.name])
     backups = sorted(backups, key=lambda tup: tup[1],reverse=True)
 
     return render_template('backups.html',backups=backups)
@@ -134,7 +133,8 @@ def list_of_backups():
 @bp.route('/show_backup', methods=['POST'])
 def show_backup():
     #get backup csv
-    backup_path = request.form.get('backup_path') 
+    backup_name = request.form.get('backup_name')
+    backup_path = app.config['BACKUP_DIR'] / backup_name
     backup_data = get_csv(backup_path)
 
     return render_template('show_backup.html',backup_data=backup_data, backup_path=backup_path)

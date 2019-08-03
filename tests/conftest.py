@@ -1,17 +1,24 @@
 import os 
-#import tempfile
 
 import pytest
 
+from pathlib import Path
+
 from flatfileed import create_app
+
+#Path to folder
+local_path = Path.cwd() / "tests"
+
+#Name of used file
+CSV_NAME = "test_test.csv"
 
 @pytest.fixture
 def app():
     app = create_app({
         'TESTING': True,
-        'CSV_PATH': "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\test_test.csv",
-        'CSV_NAME': "test_test.csv",
-        'BACKUP_DIR' : "C:\\Users\\grzes\\Desktop\\python_dev\\pet_projects\\flatfile_ed\\tests\\backup"
+        'CSV_PATH': local_path / CSV_NAME,
+        'CSV_NAME': CSV_NAME,
+        'BACKUP_DIR' : local_path / "backup"
     })
     yield app
 
