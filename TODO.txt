@@ -209,7 +209,14 @@
 			-[ZROBIONE]update testu
 		-[ZROBIONE]show_backup
 		-[ZROBIONE]Conftest i reszta błędów ścieżek
--wydzielić funkcjonalności backupów do oddzielnego modułu 
+-[ZROBIONE]wydzielić funkcjonalności backupów do oddzielnego modułu
+	-[ZROBIONE]zrobić to jako oddzielny blueprint
+		-kurde radykalna zmiana bo połowę kodu przeniosłem do innego pliku
+		 a tu jeb, wszystkie testy od razu przechodzą.
+		-to też pokazuje jak bardzo przydatne było pisanie testów jednostkowych.
+		 Normalnie musiałbym wszystkie operacje backupowe przeklikać na co poszłoby
+		 spokojnie 15 minut.
+	-[ZROBIONE]testy backupów wydzielić też do osobnego pliku 
 -pobieranie pliku z ftp i zapis do ftp
 -bakup i przywracanie bakupu z ftp
 -limitowanie dostępu do aplikacji (login i pass)

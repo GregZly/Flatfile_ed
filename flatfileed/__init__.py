@@ -31,7 +31,9 @@ def create_app(test_config=None):
         return "Hello World"
     
     from . import flatfile_operations
+    from . import backup_operations
     with app.app_context():
         app.register_blueprint(flatfile_operations.bp)
+        app.register_blueprint(backup_operations.bp)
 
     return app
