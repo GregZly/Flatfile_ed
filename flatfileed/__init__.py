@@ -32,8 +32,10 @@ def create_app(test_config=None):
     
     from . import flatfile_operations
     from . import backup_operations
+    from . import scp_interface
     with app.app_context():
         app.register_blueprint(flatfile_operations.bp)
         app.register_blueprint(backup_operations.bp)
+        app.register_blueprint(scp_interface.bp)
 
     return app
