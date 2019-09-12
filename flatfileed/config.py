@@ -17,7 +17,7 @@ BACKUP_DIR = local_path / "backup"
 
 #Scp connection parameters
 SCP_HOST, SCP_PORT = '192.168.1.26',22
-SCP_LOGIN, SCP_PASSWORD = 'pi','szaman1'
+SCP_LOGIN, SCP_PASSWORD = 'pi','pi'
 
 #Scp remote direcotry with flat file
 SCP_DIR = '/home/pi/flatfile_ed'

@@ -221,14 +221,14 @@
 	-adres: 192.168.1.26, user: pi, hasło: uniwersalne1
 	-[ZROBIONE]zrobić katalog na plik /home/pi/flatfile_ed
 	-[ZROBIONE]zrobić plik scp_test.csv
--[WIP]pobieranie pliku przez scp z linuxa i upload przez scp
+-[ZROBIONE]pobieranie pliku przez scp z linuxa i upload przez scp
 	-tu od razu trzeba równlegle robić testy
 	-[ZROBIONE]poczytać czym mogę przesyłać sobie dane do linuxa po scp
 		-biblioteki scp i paramiko
 	-[ZROBIONE]poczytać jak sobie scp zrobić lokalnie na potrzeby testów automatycznych
 		-biblioteka mock-ssh-server
 	-[ZROBIONE]instalacja bibliotek scp, paramiko, mock-ssh-server na venv
-	-[WIP]zestawianie połączenia
+	-[ZROBIONE]zestawianie połączenia
 		-[ZROBIONE]konsola pythona
 			-[ZROBIONE]Działający przykład w jupyter notebooku
 		-[ZROBIONE]moduł komunikacji - scp_interface
@@ -237,17 +237,13 @@
 				-[ZROBIONE]routing	
 				-[ZROBIONE]widok z komunikatami
 				-[ZROBIONE]przeniesienie parametrów połączenia do konfigu żywego
-		-testy dla test_connection z użyciem mock-ssh-server
-			-sukces
-			-porażka
-				-zły login/hasło
-				-zły adres
-	-pobranie pliku 
-		-komunikaty sukcesu i porażki
-		-po pobraniu bedą te same operacje co na lokalnym pliku
-	-zapis i upload
-		-komunikaty sukcesu i porażki
-	-formularz do konfigu połączenia
+	-[ZROBIONE]pobranie pliku 
+		-[ZROBIONE]pobranie pliku i zastąpienie obecnego
+		-[ZROBIONE]komunikaty sukcesu i porażki
+		-[ZROBIONE]po pobraniu bedą te same operacje co na lokalnym pliku
+	-[ZROBIONE]upload pliku
+		-[ZROBIONE]komunikaty sukcesu i porażki
+	
 -bakup i przywracanie bakupu przez scp
 -limitowanie dostępu do aplikacji (login i pass)
 -zapis do konfigu i odczyt z konfigu ustawień ftp ( w formie zakodowanej)
@@ -275,3 +271,6 @@
 
 -dodać możliwość łatwego deploymentu na inne maszyny
 	-przećwiczyć temat na raspberry pi
+
+-scp_interface - dopisać unit testy
+-scp_interface - formularz do konfigu połączenia
