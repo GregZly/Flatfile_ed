@@ -4,7 +4,7 @@ from flatfileed.csv_interface import get_csv, save_csv
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 import glob
 from pathlib import Path
-
+import csv
 #Path to folder
 local_path = Path.cwd() / "tests"
 
@@ -13,6 +13,10 @@ CSV_PATH = local_path / CSV_NAME
 #BACKUP_DIR = local_path / "backup"
 csv_path = CSV_PATH
 #backup_directory = BACKUP_DIR
+
+test_dialect = {'CSV_DELIMITER' : ',',
+               'CSV_QUOTING' : csv.QUOTE_ALL,
+               'CSV_DOUBLEQUOTE' : True}
 
 def test_index(client):
     response = client.get('/index')
@@ -27,7 +31,7 @@ def test_read_csv_successful(client):
     csv_data = [['Row1Col1','Row1Col2','Row1Col3'],
                 ['Row2Col1','Row2Col2','Row2Col3']]
     #save data into test csv file
-    save_csv(csv_data,csv_path)
+    save_csv(csv_data,csv_path,test_dialect)
 
     #check if file has been read succssefully
     response = client.get('/index')
@@ -51,7 +55,7 @@ def test_add_row_post_not_sort(client):
                            follow_redirects=True)
     
     #check if new row appeared in csv file
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     assert  any("TestWrite1" in s for s in csv_data)
     
     #check if response returned code 200
@@ -67,7 +71,7 @@ def test_add_row_post_sort(client):
                            follow_redirects=True)
 
     #check if new row appeared in csv file
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     assert  any("AAA_1" in s for s in csv_data)
 
     #check if new row is first row in csv file
@@ -89,7 +93,7 @@ def test_add_row_post_not_sort_failed(client):
     assert b'ERROR! Cannot write to file!' in response.data
 
     #confirm that entered row does not exist
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     assert  not(any("ErrorWrite1" in s for s in csv_data))
 
     #check if response returned code 200
@@ -100,7 +104,7 @@ def test_add_row_post_not_sort_failed(client):
 
 def test_mod_row(client):
     #get first row from CSV
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     row_data = csv_data[0]
 
     response = client.post('/modify_row',
@@ -125,7 +129,7 @@ def test_save_as_mod_success(client):
     
     #check if modifcation have completed successful
     #get modified CSV row
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     row_data = csv_data[0]
 
     assert row_data[0] == 'ModWrite1'
@@ -156,7 +160,7 @@ def test_as_new_success(client):
     
     #check if modifcation have completed successful
     #get modified CSV row
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     row_data = csv_data[-1]
 
     assert row_data[0] == 'NewWrite1'
@@ -180,7 +184,7 @@ def test_as_new_failure(client):
     assert b'ERROR! Cannot write to file!' in response.data
 
     #confirm that entered row does not exist
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     assert  not(any("ErrorWrite1" in s for s in csv_data))
 
     #check if response returned code 200
@@ -191,7 +195,7 @@ def test_as_new_failure(client):
     
 def test_remove_row_success(client):
     #get data of row to remove
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     row_data = csv_data[0]
 
     #invoke removation of row
@@ -200,7 +204,7 @@ def test_remove_row_success(client):
                             follow_redirects=True)
     
     #confirm that removed row doesnt exist
-    csv_data_after_remove  = get_csv(csv_path)
+    csv_data_after_remove  = get_csv(csv_path,test_dialect)
     assert row_data[0] != csv_data_after_remove[0][0]
     assert row_data[1] != csv_data_after_remove[0][1]
     assert row_data[2] != csv_data_after_remove[0][2]      
@@ -210,7 +214,7 @@ def test_remove_row_success(client):
 
 def test_remove_row_failure(client):
     #get data of row to remove
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
     row_data = csv_data[0]
 
     #block file to prevent write
@@ -225,7 +229,7 @@ def test_remove_row_failure(client):
     assert b'ERROR! Cannot write to file!' in response.data
 
     #confirm that row to remove still exist
-    csv_data_after_remove = get_csv(csv_path)
+    csv_data_after_remove = get_csv(csv_path,test_dialect)
     
     assert row_data[0] == csv_data_after_remove[0][0]
     assert row_data[1] == csv_data_after_remove[0][1]

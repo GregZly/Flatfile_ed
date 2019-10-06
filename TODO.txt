@@ -243,34 +243,75 @@
 		-[ZROBIONE]po pobraniu bedą te same operacje co na lokalnym pliku
 	-[ZROBIONE]upload pliku
 		-[ZROBIONE]komunikaty sukcesu i porażki
-	
--bakup i przywracanie bakupu przez scp
--limitowanie dostępu do aplikacji (login i pass)
--zapis do konfigu i odczyt z konfigu ustawień ftp ( w formie zakodowanej)
--lockowanie edytowanego pliku za pomocą biblioteki filelock
--zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
 
-----testy do funkcjonalności wyżej
-
--konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
-	-do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
-		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)  
-	-dodać test jednostkowe czy dane zapisywane są zgodne z formatem
+-[WIP]konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
+	-[ZROBIONE]do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
+		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)
+		-[ZROBIONE]dialekt csv będzie przekazywany parametrem do funkcji	
+			-tu w ogóle można by zrobić z tego obiekt :)
+			-[ZROBIONE]csv_interface
+			-[ZROBIONE]config
+			-[ZROBIONE]flatfile_operations
+			-[ZROBIONE]backup_operations
+			-[ZROBIONE]naprostować testy
+	-[ZROBIONE]dodać testy jednostkowe do dialektu
+		-[ZROBIONE]odczytywany plik jest plikiem csv zgodnym z zadeklarowanym dialektem
+			-chyba atrybut dialektu 'strict' od razu rozwiąże mój problem
+				-jednak nie - csv nie zwraca żadnego błędu
+			-[ZROBIONE]sprawdzić pomysł sprawdzania ilości wykrytych kolumn
+				-działa :)
+				-co prawda test nie ma większego sensu ale udowodniłem że trochę ogarniam
+			-[ZROBIONE]dodać walidację w funkcji get_csv	
+				-[ZROBIONE]tam musi być walidator który sprawdza czy podany plik faktycznie ma zadeklarowaną
+				 liczbę kolumn. W przypadku wykrytego błędu musi zwracać komunikat
+					-albo zgłaszać wyjątek który będzie eskalowany wyżej.
+		-odczytywany plik ma inny dialekt niż zadeklarowany
+		-przy okazji wywalić ze test_csv_interface wszystkie względne ścieżki
+	-[WIP]konfiguracja kolumn w konfigu
+		-dozowlona długość
+		-renderowanie tabelek i formularzy do edycji w oparciu o konfig
+			-flatfile_operations
+			-backup_operations
+		-testy	
+			-zgodność odczytywanego pliku z formatem
+				-ilość kolumn
+				-dozowlona ilość znaków
 
 -logowanie zadrzeń do pliku loga
 	-wywalanie aplikacji gdy wielkość pliku loga przekroczy limit bezpieczeństwa
 		-w konfigu do ustalenia
 		-gdy konfig jest niedostępny to 1 GB
 
+
+-poprawić layout aplikacji
+-uzupełnić dokumentację
+	-wybrać licencję projektu na githubie na MIT
+	-zrobić w miarę proste readme.md żeby to miało ręce i nogi
+
+-zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
+	-dynamiczne dodawanie kolejnego wiersza na formularzu
+		-tutaj trzeba użyć najprostszego js-a 
+----testy do funkcjonalności wyżej
+
 --testy aplikacji (w tym automatyczne)
 						
 -porozdzielać funkcjonalności na modele, kontrolery i widoki
 
--poprawić layout aplikacji
--uzupełnić dokumentację
 
 -dodać możliwość łatwego deploymentu na inne maszyny
 	-przećwiczyć temat na raspberry pi
 
+-scp_interface - zmiana struktury kodu na bardziej obiektowy
 -scp_interface - dopisać unit testy
 -scp_interface - formularz do konfigu połączenia
+-limitowanie dostępu do aplikacji (login i pass)
+	-znaleźć dobry przykład (chyba jest nawet nas tronie flaska)
+		-https://flask.palletsprojects.com/en/1.1.x/tutorial/views/
+	-oddzielny moduł jako blue print
+	-testy
+-zewnętrzny konfig ftp 
+	-odczyt z konfigu ustawień ftp
+	-zapis ustawień przez formularz
+	-test połączenia 
+	-test transferu
+-lockowanie edytowanego pliku za pomocą biblioteki filelock

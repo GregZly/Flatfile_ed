@@ -4,6 +4,8 @@ from flatfileed.csv_interface import get_csv, save_csv
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 import glob
 from pathlib import Path
+import csv
+
 
 #Path to folder
 local_path = Path.cwd() / "tests"
@@ -14,10 +16,16 @@ BACKUP_DIR = local_path / "backup"
 csv_path = CSV_PATH
 backup_directory = BACKUP_DIR
 
+#csv test dialect
+test_dialect = {'CSV_DELIMITER' : ',',
+               'CSV_QUOTING' : csv.QUOTE_ALL,
+               'CSV_DOUBLEQUOTE' : True}
+
+
 def test_create_backup_successful(client):
 
     #get current state of csv
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
 
     #do backup
     response = client.post('/do_bak',follow_redirects=True)
@@ -37,7 +45,7 @@ def test_create_backup_successful(client):
     assert os.path.exists(bak_path)
 
     #load backup to memory
-    backup_data = get_csv(bak_path)
+    backup_data = get_csv(bak_path,test_dialect)
 
     #compare staged state and last backup to confirm that backup is correct
     assert csv_data == backup_data
@@ -93,7 +101,7 @@ def test_return_backup_success(client):
     assert resp3.status_code == 200 
 
     #get data from csv and check if new row exist
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
 
     assert new_row[0] != csv_data[0][0]
     assert new_row[1] != csv_data[0][1]
@@ -138,7 +146,7 @@ def test_return_backup_failure(client):
     assert b'ERROR! Cannot write to file!' in resp3.data
 
     #get data from csv and check if new row exist
-    csv_data = get_csv(csv_path)
+    csv_data = get_csv(csv_path,test_dialect)
 
     assert new_row[0] == csv_data[0][0]
     assert new_row[1] == csv_data[0][1]

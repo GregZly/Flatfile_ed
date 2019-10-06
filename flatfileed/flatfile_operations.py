@@ -17,10 +17,12 @@ from .csv_interface import get_csv, save_csv
 def show_csv_data():
     try:
         #get csv
-        csv_data = get_csv(app.config['CSV_PATH'])
+        csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
         return render_template('modifiable_list.html',csv_data=csv_data)
     except PermissionError:
         return "ERROR! Configured file unreadable!"
+    except csv.Error:
+        return str(csv.Error)
 
 @bp.route('/add_row',methods=['GET','POST'])
 def add_row():
@@ -28,7 +30,7 @@ def add_row():
         return render_template('forms/append_row.html')
     elif request.method == 'POST':
         #get csv
-        csv_data = get_csv(app.config['CSV_PATH'])
+        csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
         try:
             #read data to new row
             csv_row = {k: v for k, v in request.form.items() if k.startswith('col')} 
@@ -39,7 +41,7 @@ def add_row():
                 csv_data.sort()
 
             #save data
-            save_csv(csv_data, app.config['CSV_PATH'])
+            save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
 
             return redirect("/", code=301)
         except PermissionError:
@@ -49,7 +51,7 @@ def add_row():
 @bp.route('/modify_row', methods=['POST'])
 def modify_row():
     #get csv
-    csv_data = get_csv(app.config['CSV_PATH'])
+    csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
     
     #read data of selected row
     print(request.form['row_index'])
@@ -60,7 +62,7 @@ def modify_row():
 @bp.route('/save_mod', methods=['POST'])
 def save_modification():
     #get csv
-    csv_data = get_csv(app.config['CSV_PATH'])
+    csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
     
     try:
         #read data to new row
@@ -73,7 +75,7 @@ def save_modification():
             csv_data.append(csv_row.values())
 
         #save data
-        save_csv(csv_data, app.config['CSV_PATH'])
+        save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
 
         return redirect("/", code=301)
     except IndexError:
@@ -84,14 +86,14 @@ def save_modification():
 @bp.route('/remove_row', methods=['POST'])
 def remove_row():
     #get csv
-    csv_data = get_csv(app.config['CSV_PATH'])
+    csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
 
     try:
         #read data to new row
         csv_data.remove(csv_data[int(request.form['row_index'])])  
 
         #save data
-        save_csv(csv_data, app.config['CSV_PATH'])
+        save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
     
         return redirect("/", code=301)
     except PermissionError:

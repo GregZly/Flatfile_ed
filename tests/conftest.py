@@ -1,4 +1,6 @@
 import os 
+import csv
+
 
 import pytest
 
@@ -18,7 +20,11 @@ def app():
         'TESTING': True,
         'CSV_PATH': local_path / CSV_NAME,
         'CSV_NAME': CSV_NAME,
-        'BACKUP_DIR' : local_path / "backup"
+        'BACKUP_DIR' : local_path / "backup",
+        'CSV_DIALECT' : {'CSV_DELIMITER' : ',',
+                         'CSV_QUOTING' : csv.QUOTE_ALL,
+                         'CSV_DOUBLEQUOTE' : True,
+                         'CSV_COLUMNS' : 3}
     })
     yield app
 

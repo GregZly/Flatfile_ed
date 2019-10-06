@@ -14,7 +14,7 @@ from .csv_interface import get_csv, save_csv
 @bp.route('/do_bak', methods=['POST'])
 def create_backup():
     #get csv
-    csv_data = get_csv(app.config['CSV_PATH'])
+    csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
 
     #init backup copy of csv file
     backup_dir = Path(app.config['BACKUP_DIR'])
@@ -25,7 +25,7 @@ def create_backup():
     backup_file.close()
 
     #save data to backup
-    save_csv(csv_data, backup_path)
+    save_csv(csv_data, backup_path,app.config['CSV_DIALECT'])
     
     return redirect("/", code=301)
 
@@ -48,7 +48,7 @@ def show_backup():
     #get backup csv
     backup_name = request.form.get('backup_name')
     backup_path = app.config['BACKUP_DIR'] / backup_name
-    backup_data = get_csv(backup_path)
+    backup_data = get_csv(backup_path,app.config['CSV_DIALECT'])
 
     return render_template('show_backup.html',backup_data=backup_data, backup_path=backup_path)
 
@@ -59,10 +59,10 @@ def return_from_backup():
         backup_path = request.form.get('backup_path') 
     
         #get backup data
-        backup_data = get_csv(backup_path)
+        backup_data = get_csv(backup_path,app.config['CSV_DIALECT'])
 
         #save data
-        save_csv(backup_data, app.config['CSV_PATH'])
+        save_csv(backup_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
 
         return redirect("/", code=301)
     except PermissionError:
