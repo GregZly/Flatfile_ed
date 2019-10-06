@@ -276,10 +276,23 @@
 			-[ZROBIONE]zgodność odczytywanego pliku z formatem
 				-[ZROBIONE]ilość kolumn
 
--logowanie zadrzeń do pliku loga
-	-wywalanie aplikacji gdy wielkość pliku loga przekroczy limit bezpieczeństwa
-		-w konfigu do ustalenia
-		-gdy konfig jest niedostępny to 1 GB
+-[ZROBIONE]logowanie zadrzeń do pliku loga
+	-[ZROBIONE]test podstawowego loggera
+	-[ZROBIONE]dodanie loggera flaskowego do aplikacji
+	-[ZROBIONE]logowanie zdarzeń info tylko gdy przełącznik logowania jest ustawiony na 1
+		-trzeba zakomentować app.logger.disabled=True żeby logowanie się włączyło 
+	-[ZROBIONE]Zmienić format logowania z tego co znalazłem w internecie
+		-dodać informację o czasie zalogania zadrzenia
+	-[ZROBIONE]zdarzenia do logowania:
+		-[ZROBIONE]wpisy do pliku
+			-[ZROBIONE]nowy wiersz
+			-[ZROBIONE]modyfikacja wiersza
+			-[ZROBIONE]usunięcie wiersza
+		-[ZROBIONE]założenie backupu
+		-[ZROBIONE]przywrócenie z backupu
+		-[ZROBIONE]download ze zdalnego serwera
+		-[ZROBIONE]upload do zdalnego serwera
+		-[ZROBIONE]błędy wyłapane z except
 
 
 -poprawić layout aplikacji

@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from flask import Flask
+import logging
 
 def create_app(test_config=None):
     #create and configure application
@@ -30,6 +31,7 @@ def create_app(test_config=None):
     def hello():
         return "Hello World"
     
+    #load application modules(blueprints)
     from . import flatfile_operations
     from . import backup_operations
     from . import scp_interface
@@ -38,4 +40,12 @@ def create_app(test_config=None):
         app.register_blueprint(backup_operations.bp)
         app.register_blueprint(scp_interface.bp)
 
+    #configure logger
+    logging.basicConfig(filename='app.log',
+                        filemode='a',
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        datefmt='%Y-%m-%d %H:%M:%S')
+    app.logger = logging.getLogger('werkzeug')
+    #app.logger.disabled = True
+    
     return app

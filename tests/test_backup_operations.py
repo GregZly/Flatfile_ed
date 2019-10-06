@@ -19,7 +19,8 @@ backup_directory = BACKUP_DIR
 #csv test dialect
 test_dialect = {'CSV_DELIMITER' : ',',
                'CSV_QUOTING' : csv.QUOTE_ALL,
-               'CSV_DOUBLEQUOTE' : True}
+               'CSV_DOUBLEQUOTE' : True,
+               'CSV_COLUMNS' : 3}
 
 
 def test_create_backup_successful(client):

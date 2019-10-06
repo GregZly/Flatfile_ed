@@ -27,6 +27,8 @@ def create_backup():
     #save data to backup
     save_csv(csv_data, backup_path,app.config['CSV_DIALECT'])
     
+    app.logger.info('Backup created as ' + str(backup_path))
+
     return redirect("/", code=301)
 
 @bp.route('/list_of_backups')
@@ -40,7 +42,7 @@ def list_of_backups():
     for path in backup_list:
         backups.append([str(path), path.name])
     backups = sorted(backups, key=lambda tup: tup[1],reverse=True)
-
+    app.logger.info('Backups listed')
     return render_template('backups.html',backups=backups)
 
 @bp.route('/show_backup', methods=['POST'])
@@ -49,6 +51,8 @@ def show_backup():
     backup_name = request.form.get('backup_name')
     backup_path = app.config['BACKUP_DIR'] / backup_name
     backup_data = get_csv(backup_path,app.config['CSV_DIALECT'])
+
+    app.logger.info('Backup ' + str(backup_path) + ' displayed on screen')
 
     return render_template('show_backup.html',backup_data=backup_data, backup_path=backup_path)
 
@@ -63,6 +67,8 @@ def return_from_backup():
 
         #save data
         save_csv(backup_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
+
+        app.logger.info('CSV file returned from backup ' + str(backup_path))
 
         return redirect("/", code=301)
     except PermissionError:

@@ -18,6 +18,7 @@ def show_csv_data():
     try:
         #get csv
         csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
+        app.logger.info('Index works!')
         return render_template('modifiable_list.html',csv_data=csv_data)
     except PermissionError:
         return "ERROR! Configured file unreadable!"
@@ -42,7 +43,7 @@ def add_row():
 
             #save data
             save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
-
+            app.logger.info('Row ' +str(csv_row) + 'added to file')
             return redirect("/", code=301)
         except PermissionError:
             return "ERROR! Cannot write to file!"
@@ -56,7 +57,7 @@ def modify_row():
     #read data of selected row
     print(request.form['row_index'])
     mod_row = csv_data[int(request.form['row_index'])]
-
+    app.logger.info('Row ' +str(mod_row) + 'requested to modify')
     return render_template('forms/mod_row.html', mod_index=request.form['row_index'], mod_row=mod_row)
 
 @bp.route('/save_mod', methods=['POST'])
@@ -69,10 +70,12 @@ def save_modification():
         if request.form.get('submit') == 'modify':
             csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
             csv_data[int(request.form['mod_index'])] = csv_row.values()
+            app.logger.info('Row with index: ' + request.form['mod_index'] + 'modified to: ' +str(csv_row))
 
         elif request.form.get('submit') == 'save_as_new':
             csv_row = {k: v for k, v in request.form.items() if k.startswith('col')}
             csv_data.append(csv_row.values())
+            app.logger.info('Row ' +str(csv_row) + 'saved as new to file')
 
         #save data
         save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
@@ -94,7 +97,9 @@ def remove_row():
 
         #save data
         save_csv(csv_data, app.config['CSV_PATH'],app.config['CSV_DIALECT'])
-    
+
+        app.logger.info('Row with index: ' + request.form['row_index'] + 'removed from file')
+
         return redirect("/", code=301)
     except PermissionError:
         return 'ERROR! Cannot write to file!'
