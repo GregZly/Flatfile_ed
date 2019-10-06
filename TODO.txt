@@ -244,7 +244,7 @@
 	-[ZROBIONE]upload pliku
 		-[ZROBIONE]komunikaty sukcesu i porażki
 
--[WIP]konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
+-[ZROBIONE]konfiguracja pliku csv (labele kolumn, dozwolone typy danych, regexy stringów)
 	-[ZROBIONE]do poprawnego odczytu i zapisu uzyć dialektów biblioteki csv
 		-csv.register_dialect('mydia', delimiter=',', quoting=csv.QUOTE_ALL, doublequote=True)
 		-[ZROBIONE]dialekt csv będzie przekazywany parametrem do funkcji	
@@ -267,15 +267,14 @@
 					-albo zgłaszać wyjątek który będzie eskalowany wyżej.
 		-odczytywany plik ma inny dialekt niż zadeklarowany
 		-przy okazji wywalić ze test_csv_interface wszystkie względne ścieżki
-	-[WIP]konfiguracja kolumn w konfigu
-		-dozowlona długość
-		-renderowanie tabelek i formularzy do edycji w oparciu o konfig
-			-flatfile_operations
-			-backup_operations
-		-testy	
-			-zgodność odczytywanego pliku z formatem
-				-ilość kolumn
-				-dozowlona ilość znaków
+	-[ZROBIONE]konfiguracja kolumn w konfigu
+		-[ZROBIONE]dozowlona długość
+		-[ZROBIONE]renderowanie tabelek i formularzy do edycji w oparciu o konfig
+			-[ZROBIONEflatfile_operations
+			-[ZROBIONE]backup_operations
+		-[ZROBIONE]testy	
+			-[ZROBIONE]zgodność odczytywanego pliku z formatem
+				-[ZROBIONE]ilość kolumn
 
 -logowanie zadrzeń do pliku loga
 	-wywalanie aplikacji gdy wielkość pliku loga przekroczy limit bezpieczeństwa

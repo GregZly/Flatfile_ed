@@ -6,12 +6,9 @@
         <h1>Add new row to csv file</h1>
         <br />
         <form method="POST"> 
-            <label>Column 1</label><input type="text" name='col1' />
-            <br />
-            <label>Column 2</label><input type="text" name='col2' />
-            <br />
-            <label>Column 3</label><input type="text" name='col3' />
-            <br />
+            {% for colnum in range(1,config['CSV_COLUMNS'] + 1) %}
+             <label>Column{{colnum}}</label><input type="text" name='col{{colnum}}' /> <br />
+            {% endfor %}
             <label>Save with sort</label><input type="checkbox" name='sort' />
             <button type="submit" name='submit' value="Form sent!">Submit</button>
         </form>

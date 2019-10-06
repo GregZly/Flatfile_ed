@@ -22,12 +22,12 @@ def show_csv_data():
     except PermissionError:
         return "ERROR! Configured file unreadable!"
     except csv.Error:
-        return str(csv.Error)
+        return 'Internal structure of CSV different than configured! Check Config!'
 
 @bp.route('/add_row',methods=['GET','POST'])
 def add_row():
     if request.method == 'GET':
-        return render_template('forms/append_row.html')
+        return render_template('forms/append_row.html',config=app.config['CSV_DIALECT'])
     elif request.method == 'POST':
         #get csv
         csv_data = get_csv(app.config['CSV_PATH'],app.config['CSV_DIALECT'])
