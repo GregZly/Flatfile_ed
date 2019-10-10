@@ -1,8 +1,8 @@
-<html>
-    <head>
-        <title>List of backups</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+
+{% block title %} List of backups {% endblock %}
+
+{% block content %}
         <h1>List of available Backups</h1>
         <ul>
             {% for pair in backups %}
@@ -10,10 +10,9 @@
                     {{pair[1]}}
                     <form method='POST' action='/show_backup'>
                         <input type="hidden" name="backup_name" value="{{pair[1]}}" />
-                        <input type="submit" value="Show Backup" />
+                        <input type="submit" value="Show Backup" class="btn btn-default" />
                     </form>
                 </li>
             {% endfor %}
         </ul>
-    </body>
-</html>
+{% endblock %}

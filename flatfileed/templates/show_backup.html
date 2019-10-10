@@ -1,8 +1,8 @@
-<html>
-    <head>
-        <title>Show Backup</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+
+{% block title %} Show Backup< {% endblock %}
+
+{% block content %}
         <h1>Backup</h1>
         <table border="1">
             {% for row in backup_data %}
@@ -17,7 +17,5 @@
             <form method="POST" action="/return_from_backup">
                 <input type="hidden" name="backup_path" value="{{ backup_path }}" />
                 <input type="submit" value="Return from backup" />
-            </form>
-            
-    </body>
-</html>
+            </form> 
+{% endblock %}

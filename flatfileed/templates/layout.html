@@ -1,0 +1,13 @@
+{% extends "bootstrap/base.html" %}
+{% block navbar %}
+    <div style="padding-top: 10px; ">
+        <form method="POST" action='/do_bak'>
+            <input type="button" class="btn btn-primary" onclick="location.href='/add_row';" value="Add New Row" />
+            <input type="submit" value="Do Backup" class="btn btn-primary"/>
+            <input type="button" class="btn btn-primary" onclick="location.href='/list_of_backups';" value="List of backups" />
+            <input type="button" class="btn btn-warning" onclick="location.href='/test_scp_connection';" value="Test Scp Connection" />
+            <input type="button" class="btn btn-success" onclick="location.href='/download_file';" value="Download File"/>
+            <input type="button" class="btn btn-danger" onclick="location.href='/upload_file';" value="Upload File"/>
+        </form>        
+    </div>
+{% endblock %}

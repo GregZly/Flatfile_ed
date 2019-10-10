@@ -295,7 +295,27 @@
 		-[ZROBIONE]błędy wyłapane z except
 
 
--poprawić layout aplikacji
+-[ZROBIONE]poprawić layout aplikacji
+	-[ZROBIONE]reasarch gotowych rozwiązań
+		-możliwe że bootstrap jest dobrym pomysłem
+		-biere bootstrapa :D
+	-[ZROBIONE]Przerobić wszystkie templaty żeby używały bloków i bootstrapa
+		-[ZROBIONE]modifiable_list
+		-[ZROBIONE]backups
+		-sample_csv (to chyba trzeba wyrzucić bo nie pamietam po co to jest)
+		-[ZROBIONE]show_backup	
+		-[ZROBIONE]forms
+			-[ZROBIONE]append_row
+			-[ZROBIONE]mod_row
+	-[ZROBIONE]poszukać jakichś upiększaczy
+		-tabelka: table table-hover
+		-przyciski: btn btn-default
+		-kontrolki formularza
+		-[ZROBIONE]top menu
+			-dodać przyciski do scp i pokolorować
+		-[ZROBIONE]add_row - poprawić szerokość formatki
+		-[ZROBIONE]mod_row - przenieść poprawki z add_row 
+	
 -uzupełnić dokumentację
 	-wybrać licencję projektu na githubie na MIT
 	-zrobić w miarę proste readme.md żeby to miało ręce i nogi
@@ -327,3 +347,5 @@
 	-test połączenia 
 	-test transferu
 -lockowanie edytowanego pliku za pomocą biblioteki filelock
+	-Wygląd aplikacji-interakcje (modify row i add row przerzucić na pływające ramk	i)
+		-płynne przejścia

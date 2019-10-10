@@ -2,15 +2,19 @@ import os
 from pathlib import Path
 
 from flask import Flask
+from flask_bootstrap import Bootstrap
 import logging
 
 def create_app(test_config=None):
     #create and configure application
     app = Flask(__name__, instance_relative_config=True)
+    Bootstrap(app)
     app.config.from_mapping(
         SECRET_KEY = 'devvvv'
     )
     
+
+
     config_file = Path(app.root_path) / "config.py"
 
     if test_config is None:

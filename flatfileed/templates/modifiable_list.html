@@ -1,12 +1,10 @@
-<html>
-    <head>
-        <title>Modifiable CSV Output</title>
-    </head>
-    <body>
-        <h1>Modifiable CSV</h1>
-        <input type="button" onclick="location.href='/add_row';" value="Add New Row" />
-        <br />
-        <table border="1">
+{% extends "layout.html" %}
+
+{% block title %} Modifiable CSV Output {% endblock %}
+
+{% block content %}
+<h1>Modifiable CSV</h1>
+        <table border="1" class="table table-hover" style="width: 500px; align-self: center;">
             {% for row in csv_data %}
                 <tr>
                     {% for cell in row %}
@@ -15,23 +13,16 @@
                     <td>
                         <form method="POST" action='/modify_row'>
                             <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
-                            <input type="submit" value="Modify" />
+                            <input type="submit" class="btn btn-default" value="Modify" />
                         </form>
                     </td>
                     <td>
                         <form method='POST' action='/remove_row'>
                             <input type="hidden" name="row_index" value="{{loop.index - 1}}" />
-                            <input type="submit" value="Delete Row" />
+                            <input type="submit" class="btn btn-default" value="Delete Row" />
                         </form>
                     </td>
                 </tr>
             {% endfor %}
             </table>
-            <br />
-            <form method="POST" action='/do_bak'>
-                <input type="submit" value="Do Backup" />
-            </form>
-            <br />
-            <input type="button" onclick="location.href='/list_of_backups';" value="List of Backups" />
-    </body>
-</html>
+{% endblock %}

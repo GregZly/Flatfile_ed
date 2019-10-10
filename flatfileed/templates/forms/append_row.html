@@ -1,16 +1,25 @@
-<html>
-    <head>
-        <title>Add new row to csv file</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+
+{% block title %} Add new row to csv file {% endblock %}
+
+{% block content %}
         <h1>Add new row to csv file</h1>
         <br />
         <form method="POST"> 
             {% for colnum in range(1,config['CSV_COLUMNS'] + 1) %}
-             <label>Column {{colnum}}</label><input type="text" name='col{{colnum}}' /> <br />
+             <!-- <label>Column {{colnum}}</label><input type="text" name='col{{colnum}}' /> <br /> -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Column {{colnum}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name='col{{colnum}}' style="width: 200px;">
+                </div>
+            </div>
             {% endfor %}
-            <label>Save with sort</label><input type="checkbox" name='sort' />
-            <button type="submit" name='submit' value="Form sent!">Submit</button>
+            <div class='checkbox' style="padding-left: 10px">
+                <label>
+                    <input type="checkbox" name='sort' />Save with sort
+                </label>
+            </div>
+            <button type="submit" name='submit' value="Form sent!" class="btn btn-default" style="padding-left: 10px;">Submit</button>
         </form>
-    </body>
-</html>
+{% endblock %}

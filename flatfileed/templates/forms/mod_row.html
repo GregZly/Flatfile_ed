@@ -1,7 +1,8 @@
-<html>
-    <head>
-        <title>Modify row of csv file</title>
-    </head>
+{% extends "layout.html" %}
+
+{% block title %} Modify row of csv file {% endblock %}
+
+{% block content %}
     <body>
         <h1>Modif row of csv file</h1>
         <br />
@@ -9,12 +10,14 @@
             <input type="hidden" name='mod_index' value={{mod_index}} /> 
             
             {% for cell in mod_row %}
-                <label>Column {{loop.index}}</label>
-                <input type="text" name="col{{loop.index}}" value="{{cell}}" />
-                <br />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Column {{loop.index}}</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="col{{loop.index}}" value="{{cell}}" style="width: 200px;"/>
+                    </div>
+                </div>
             {% endfor %}
-            <button type="submit" name='submit' value="modify">Modify Row</button>
-            <button type="submit" name='submit' value="save_as_new">Save as new row</button>
+            <button type="submit" name='submit' value="modify" class="btn btn-default">Modify Row</button>
+            <button type="submit" name='submit' value="save_as_new" class="btn btn-default">Save as new row</button>
         </form>
-    </body>
-</html>
+{% endblock %}
