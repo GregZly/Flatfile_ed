@@ -317,7 +317,7 @@
 		-[ZROBIONE]mod_row - przenieść poprawki z add_row 
 	
 -[WIP]uzupełnić dokumentację
-	-[WIP]wybrać licencję projektu na githubie na MIT
+	-[ZROBIONE]wybrać licencję projektu na githubie na MIT
 	-zrobić w miarę proste readme.md żeby to miało ręce i nogi
 
 -zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
