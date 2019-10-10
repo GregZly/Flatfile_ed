@@ -316,8 +316,8 @@
 		-[ZROBIONE]add_row - poprawić szerokość formatki
 		-[ZROBIONE]mod_row - przenieść poprawki z add_row 
 	
--uzupełnić dokumentację
-	-wybrać licencję projektu na githubie na MIT
+-[WIP]uzupełnić dokumentację
+	-[WIP]wybrać licencję projektu na githubie na MIT
 	-zrobić w miarę proste readme.md żeby to miało ręce i nogi
 
 -zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
