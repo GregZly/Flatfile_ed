@@ -316,9 +316,16 @@
 		-[ZROBIONE]add_row - poprawić szerokość formatki
 		-[ZROBIONE]mod_row - przenieść poprawki z add_row 
 	
--[WIP]uzupełnić dokumentację
+-[ZROBIONE]uzupełnić podstawową dokumentację
 	-[ZROBIONE]wybrać licencję projektu na githubie na MIT
-	-zrobić w miarę proste readme.md żeby to miało ręce i nogi
+	-[ZROBIONE]zrobić w miarę proste readme.md żeby to miało ręce i nogi
+
+
+-[WIP]dodać możliwość łatwego deploymentu na inne maszyny
+	-[ZROBIONE]Stage pip freeze do pliku requirements.txt
+	-[ZROBIONE]Napisać skrypt instalujący środowisko i biblioteki
+	
+	-[WIP]przećwiczyć temat na raspberry pi
 
 -zmodyfikować formularz append_row by dodawał dowolnie wybraną przez użytkownika ilość kolumn
 	-dynamiczne dodawanie kolejnego wiersza na formularzu
@@ -330,8 +337,6 @@
 -porozdzielać funkcjonalności na modele, kontrolery i widoki
 
 
--dodać możliwość łatwego deploymentu na inne maszyny
-	-przećwiczyć temat na raspberry pi
 
 -scp_interface - zmiana struktury kodu na bardziej obiektowy
 -scp_interface - dopisać unit testy
